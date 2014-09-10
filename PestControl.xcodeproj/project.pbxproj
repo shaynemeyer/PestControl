@@ -17,7 +17,6 @@
 		D93A51C119C07A0D0027A2FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93A51BF19C07A0D0027A2FD /* Main.storyboard */; };
 		D93A51C419C07A0D0027A2FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51C319C07A0D0027A2FD /* ViewController.m */; };
 		D93A51C719C07A0D0027A2FD /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51C619C07A0D0027A2FD /* MyScene.m */; };
-		D93A51C919C07A0E0027A2FD /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A51C819C07A0D0027A2FD /* Spaceship.png */; };
 		D93A51CB19C07A0E0027A2FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93A51CA19C07A0E0027A2FD /* Images.xcassets */; };
 		D93A51D219C07A100027A2FD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51D119C07A100027A2FD /* XCTest.framework */; };
 		D93A51D319C07A100027A2FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AB19C07A0D0027A2FD /* Foundation.framework */; };
@@ -79,6 +78,7 @@
 		D93A526219C07BFE0027A2FD /* level-3-sample.tmx in Resources */ = {isa = PBXBuildFile; fileRef = D93A525519C07BFE0027A2FD /* level-3-sample.tmx */; };
 		D93A526319C07BFE0027A2FD /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93A525619C07BFE0027A2FD /* Levels.plist */; };
 		D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */; };
+		D93A526719C07CE80027A2FD /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A526619C07CE80027A2FD /* TileMapLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,7 +108,6 @@
 		D93A51C319C07A0D0027A2FD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D93A51C519C07A0D0027A2FD /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		D93A51C619C07A0D0027A2FD /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		D93A51C819C07A0D0027A2FD /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		D93A51CA19C07A0E0027A2FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D93A51D019C07A100027A2FD /* PestControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PestControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93A51D119C07A100027A2FD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -178,6 +177,8 @@
 		D93A525619C07BFE0027A2FD /* Levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Levels.plist; sourceTree = "<group>"; };
 		D93A525719C07BFE0027A2FD /* TileMapLayerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayerLoader.h; sourceTree = "<group>"; };
 		D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayerLoader.m; sourceTree = "<group>"; };
+		D93A526519C07CE80027A2FD /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
+		D93A526619C07CE80027A2FD /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +249,8 @@
 				D93A51C319C07A0D0027A2FD /* ViewController.m */,
 				D93A51C519C07A0D0027A2FD /* MyScene.h */,
 				D93A51C619C07A0D0027A2FD /* MyScene.m */,
-				D93A51C819C07A0D0027A2FD /* Spaceship.png */,
+				D93A526519C07CE80027A2FD /* TileMapLayer.h */,
+				D93A526619C07CE80027A2FD /* TileMapLayer.m */,
 				D93A51CA19C07A0E0027A2FD /* Images.xcassets */,
 				D93A51B419C07A0D0027A2FD /* Supporting Files */,
 			);
@@ -507,7 +509,6 @@
 				D93A522D19C07AFD0027A2FD /* WaterDrop.png in Resources */,
 				D93A522319C07AFD0027A2FD /* FirebugSmoke.sks in Resources */,
 				D93A51CB19C07A0E0027A2FD /* Images.xcassets in Resources */,
-				D93A51C919C07A0E0027A2FD /* Spaceship.png in Resources */,
 				D93A525D19C07BFE0027A2FD /* level-1-bg.txt in Resources */,
 				D93A522219C07AFD0027A2FD /* BugSplatter.sks in Resources */,
 				D93A523619C07AFD0027A2FD /* KillBug-12.mp3 in Resources */,
@@ -557,6 +558,7 @@
 				D93A51C719C07A0D0027A2FD /* MyScene.m in Sources */,
 				D93A524A19C07BE70027A2FD /* SKTEffects.m in Sources */,
 				D93A51F519C07A590027A2FD /* SKTAudio.m in Sources */,
+				D93A526719C07CE80027A2FD /* TileMapLayer.m in Sources */,
 				D93A51C419C07A0D0027A2FD /* ViewController.m in Sources */,
 				D93A51F319C07A590027A2FD /* SKEmitterNode+SKTExtras.m in Sources */,
 				D93A524B19C07BE70027A2FD /* SKTTimingFunctions.m in Sources */,
