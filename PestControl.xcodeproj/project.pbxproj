@@ -29,6 +29,42 @@
 		D93A51F419C07A590027A2FD /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51ED19C07A590027A2FD /* SKNode+SKTExtras.m */; };
 		D93A51F519C07A590027A2FD /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51EF19C07A590027A2FD /* SKTAudio.m */; };
 		D93A51F619C07A590027A2FD /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D93A51F119C07A590027A2FD /* SKTUtils.mm */; };
+		D93A522019C07AFD0027A2FD /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D93A51FA19C07AFD0027A2FD /* characters.atlas */; };
+		D93A522119C07AFD0027A2FD /* scenery.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D93A51FB19C07AFD0027A2FD /* scenery.atlas */; };
+		D93A522219C07AFD0027A2FD /* BugSplatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = D93A51FD19C07AFD0027A2FD /* BugSplatter.sks */; };
+		D93A522319C07AFD0027A2FD /* FirebugSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = D93A51FE19C07AFD0027A2FD /* FirebugSmoke.sks */; };
+		D93A522419C07AFD0027A2FD /* FirebugSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = D93A51FF19C07AFD0027A2FD /* FirebugSparks.sks */; };
+		D93A522519C07AFD0027A2FD /* Leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A520019C07AFD0027A2FD /* Leaf.png */; };
+		D93A522619C07AFD0027A2FD /* PlayerHitWall.sks in Resources */ = {isa = PBXBuildFile; fileRef = D93A520119C07AFD0027A2FD /* PlayerHitWall.sks */; };
+		D93A522719C07AFD0027A2FD /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = D93A520219C07AFD0027A2FD /* PlayerTrail.sks */; };
+		D93A522819C07AFD0027A2FD /* Rock.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A520319C07AFD0027A2FD /* Rock.png */; };
+		D93A522919C07AFD0027A2FD /* Spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A520419C07AFD0027A2FD /* Spark.png */; };
+		D93A522A19C07AFD0027A2FD /* Splat.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A520519C07AFD0027A2FD /* Splat.png */; };
+		D93A522B19C07AFD0027A2FD /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A520619C07AFD0027A2FD /* Star.png */; };
+		D93A522C19C07AFD0027A2FD /* TreeSmash.sks in Resources */ = {isa = PBXBuildFile; fileRef = D93A520719C07AFD0027A2FD /* TreeSmash.sks */; };
+		D93A522D19C07AFD0027A2FD /* WaterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = D93A520819C07AFD0027A2FD /* WaterDrop.png */; };
+		D93A522E19C07AFD0027A2FD /* DrownFireBug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A520A19C07AFD0027A2FD /* DrownFireBug.mp3 */; };
+		D93A522F19C07AFD0027A2FD /* HitFireBug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A520B19C07AFD0027A2FD /* HitFireBug.mp3 */; };
+		D93A523019C07AFD0027A2FD /* HitTree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A520C19C07AFD0027A2FD /* HitTree.mp3 */; };
+		D93A523119C07AFD0027A2FD /* HitWall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A520D19C07AFD0027A2FD /* HitWall.mp3 */; };
+		D93A523219C07AFD0027A2FD /* HitWater.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A520E19C07AFD0027A2FD /* HitWater.mp3 */; };
+		D93A523319C07AFD0027A2FD /* KillBug-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A520F19C07AFD0027A2FD /* KillBug-1.mp3 */; };
+		D93A523419C07AFD0027A2FD /* KillBug-10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521019C07AFD0027A2FD /* KillBug-10.mp3 */; };
+		D93A523519C07AFD0027A2FD /* KillBug-11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521119C07AFD0027A2FD /* KillBug-11.mp3 */; };
+		D93A523619C07AFD0027A2FD /* KillBug-12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521219C07AFD0027A2FD /* KillBug-12.mp3 */; };
+		D93A523719C07AFD0027A2FD /* KillBug-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521319C07AFD0027A2FD /* KillBug-2.mp3 */; };
+		D93A523819C07AFD0027A2FD /* KillBug-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521419C07AFD0027A2FD /* KillBug-3.mp3 */; };
+		D93A523919C07AFD0027A2FD /* KillBug-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521519C07AFD0027A2FD /* KillBug-4.mp3 */; };
+		D93A523A19C07AFD0027A2FD /* KillBug-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521619C07AFD0027A2FD /* KillBug-5.mp3 */; };
+		D93A523B19C07AFD0027A2FD /* KillBug-6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521719C07AFD0027A2FD /* KillBug-6.mp3 */; };
+		D93A523C19C07AFD0027A2FD /* KillBug-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521819C07AFD0027A2FD /* KillBug-7.mp3 */; };
+		D93A523D19C07AFD0027A2FD /* KillBug-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521919C07AFD0027A2FD /* KillBug-8.mp3 */; };
+		D93A523E19C07AFD0027A2FD /* KillBug-9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521A19C07AFD0027A2FD /* KillBug-9.mp3 */; };
+		D93A523F19C07AFD0027A2FD /* Lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521B19C07AFD0027A2FD /* Lose.mp3 */; };
+		D93A524019C07AFD0027A2FD /* Music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521C19C07AFD0027A2FD /* Music.mp3 */; };
+		D93A524119C07AFD0027A2FD /* PlayerMove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521D19C07AFD0027A2FD /* PlayerMove.mp3 */; };
+		D93A524219C07AFD0027A2FD /* TickTock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521E19C07AFD0027A2FD /* TickTock.mp3 */; };
+		D93A524319C07AFD0027A2FD /* Win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521F19C07AFD0027A2FD /* Win.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +111,42 @@
 		D93A51EF19C07A590027A2FD /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
 		D93A51F019C07A590027A2FD /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
 		D93A51F119C07A590027A2FD /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
+		D93A51FA19C07AFD0027A2FD /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = characters.atlas; sourceTree = "<group>"; };
+		D93A51FB19C07AFD0027A2FD /* scenery.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = scenery.atlas; sourceTree = "<group>"; };
+		D93A51FD19C07AFD0027A2FD /* BugSplatter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BugSplatter.sks; sourceTree = "<group>"; };
+		D93A51FE19C07AFD0027A2FD /* FirebugSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FirebugSmoke.sks; sourceTree = "<group>"; };
+		D93A51FF19C07AFD0027A2FD /* FirebugSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FirebugSparks.sks; sourceTree = "<group>"; };
+		D93A520019C07AFD0027A2FD /* Leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaf.png; sourceTree = "<group>"; };
+		D93A520119C07AFD0027A2FD /* PlayerHitWall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerHitWall.sks; sourceTree = "<group>"; };
+		D93A520219C07AFD0027A2FD /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerTrail.sks; sourceTree = "<group>"; };
+		D93A520319C07AFD0027A2FD /* Rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rock.png; sourceTree = "<group>"; };
+		D93A520419C07AFD0027A2FD /* Spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spark.png; sourceTree = "<group>"; };
+		D93A520519C07AFD0027A2FD /* Splat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splat.png; sourceTree = "<group>"; };
+		D93A520619C07AFD0027A2FD /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
+		D93A520719C07AFD0027A2FD /* TreeSmash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TreeSmash.sks; sourceTree = "<group>"; };
+		D93A520819C07AFD0027A2FD /* WaterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WaterDrop.png; sourceTree = "<group>"; };
+		D93A520A19C07AFD0027A2FD /* DrownFireBug.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DrownFireBug.mp3; sourceTree = "<group>"; };
+		D93A520B19C07AFD0027A2FD /* HitFireBug.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HitFireBug.mp3; sourceTree = "<group>"; };
+		D93A520C19C07AFD0027A2FD /* HitTree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HitTree.mp3; sourceTree = "<group>"; };
+		D93A520D19C07AFD0027A2FD /* HitWall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HitWall.mp3; sourceTree = "<group>"; };
+		D93A520E19C07AFD0027A2FD /* HitWater.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HitWater.mp3; sourceTree = "<group>"; };
+		D93A520F19C07AFD0027A2FD /* KillBug-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-1.mp3"; sourceTree = "<group>"; };
+		D93A521019C07AFD0027A2FD /* KillBug-10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-10.mp3"; sourceTree = "<group>"; };
+		D93A521119C07AFD0027A2FD /* KillBug-11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-11.mp3"; sourceTree = "<group>"; };
+		D93A521219C07AFD0027A2FD /* KillBug-12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-12.mp3"; sourceTree = "<group>"; };
+		D93A521319C07AFD0027A2FD /* KillBug-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-2.mp3"; sourceTree = "<group>"; };
+		D93A521419C07AFD0027A2FD /* KillBug-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-3.mp3"; sourceTree = "<group>"; };
+		D93A521519C07AFD0027A2FD /* KillBug-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-4.mp3"; sourceTree = "<group>"; };
+		D93A521619C07AFD0027A2FD /* KillBug-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-5.mp3"; sourceTree = "<group>"; };
+		D93A521719C07AFD0027A2FD /* KillBug-6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-6.mp3"; sourceTree = "<group>"; };
+		D93A521819C07AFD0027A2FD /* KillBug-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-7.mp3"; sourceTree = "<group>"; };
+		D93A521919C07AFD0027A2FD /* KillBug-8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-8.mp3"; sourceTree = "<group>"; };
+		D93A521A19C07AFD0027A2FD /* KillBug-9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "KillBug-9.mp3"; sourceTree = "<group>"; };
+		D93A521B19C07AFD0027A2FD /* Lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lose.mp3; sourceTree = "<group>"; };
+		D93A521C19C07AFD0027A2FD /* Music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music.mp3; sourceTree = "<group>"; };
+		D93A521D19C07AFD0027A2FD /* PlayerMove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlayerMove.mp3; sourceTree = "<group>"; };
+		D93A521E19C07AFD0027A2FD /* TickTock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TickTock.mp3; sourceTree = "<group>"; };
+		D93A521F19C07AFD0027A2FD /* Win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Win.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +208,7 @@
 		D93A51B319C07A0D0027A2FD /* PestControl */ = {
 			isa = PBXGroup;
 			children = (
+				D93A51F719C07AE30027A2FD /* Resources */,
 				D93A51E719C07A590027A2FD /* SKTUtils */,
 				D93A51BC19C07A0D0027A2FD /* AppDelegate.h */,
 				D93A51BD19C07A0D0027A2FD /* AppDelegate.m */,
@@ -195,6 +268,89 @@
 				D93A51F119C07A590027A2FD /* SKTUtils.mm */,
 			);
 			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		D93A51F719C07AE30027A2FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D93A51F819C07AFD0027A2FD /* Art */,
+				D93A524419C07B560027A2FD /* Levels */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D93A51F819C07AFD0027A2FD /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				D93A51F919C07AFD0027A2FD /* Images */,
+				D93A51FC19C07AFD0027A2FD /* Particles */,
+				D93A520919C07AFD0027A2FD /* Sounds */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		D93A51F919C07AFD0027A2FD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D93A51FA19C07AFD0027A2FD /* characters.atlas */,
+				D93A51FB19C07AFD0027A2FD /* scenery.atlas */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D93A51FC19C07AFD0027A2FD /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				D93A51FD19C07AFD0027A2FD /* BugSplatter.sks */,
+				D93A51FE19C07AFD0027A2FD /* FirebugSmoke.sks */,
+				D93A51FF19C07AFD0027A2FD /* FirebugSparks.sks */,
+				D93A520019C07AFD0027A2FD /* Leaf.png */,
+				D93A520119C07AFD0027A2FD /* PlayerHitWall.sks */,
+				D93A520219C07AFD0027A2FD /* PlayerTrail.sks */,
+				D93A520319C07AFD0027A2FD /* Rock.png */,
+				D93A520419C07AFD0027A2FD /* Spark.png */,
+				D93A520519C07AFD0027A2FD /* Splat.png */,
+				D93A520619C07AFD0027A2FD /* Star.png */,
+				D93A520719C07AFD0027A2FD /* TreeSmash.sks */,
+				D93A520819C07AFD0027A2FD /* WaterDrop.png */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
+		D93A520919C07AFD0027A2FD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D93A520A19C07AFD0027A2FD /* DrownFireBug.mp3 */,
+				D93A520B19C07AFD0027A2FD /* HitFireBug.mp3 */,
+				D93A520C19C07AFD0027A2FD /* HitTree.mp3 */,
+				D93A520D19C07AFD0027A2FD /* HitWall.mp3 */,
+				D93A520E19C07AFD0027A2FD /* HitWater.mp3 */,
+				D93A520F19C07AFD0027A2FD /* KillBug-1.mp3 */,
+				D93A521019C07AFD0027A2FD /* KillBug-10.mp3 */,
+				D93A521119C07AFD0027A2FD /* KillBug-11.mp3 */,
+				D93A521219C07AFD0027A2FD /* KillBug-12.mp3 */,
+				D93A521319C07AFD0027A2FD /* KillBug-2.mp3 */,
+				D93A521419C07AFD0027A2FD /* KillBug-3.mp3 */,
+				D93A521519C07AFD0027A2FD /* KillBug-4.mp3 */,
+				D93A521619C07AFD0027A2FD /* KillBug-5.mp3 */,
+				D93A521719C07AFD0027A2FD /* KillBug-6.mp3 */,
+				D93A521819C07AFD0027A2FD /* KillBug-7.mp3 */,
+				D93A521919C07AFD0027A2FD /* KillBug-8.mp3 */,
+				D93A521A19C07AFD0027A2FD /* KillBug-9.mp3 */,
+				D93A521B19C07AFD0027A2FD /* Lose.mp3 */,
+				D93A521C19C07AFD0027A2FD /* Music.mp3 */,
+				D93A521D19C07AFD0027A2FD /* PlayerMove.mp3 */,
+				D93A521E19C07AFD0027A2FD /* TickTock.mp3 */,
+				D93A521F19C07AFD0027A2FD /* Win.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D93A524419C07B560027A2FD /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,10 +429,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93A523A19C07AFD0027A2FD /* KillBug-5.mp3 in Resources */,
+				D93A522419C07AFD0027A2FD /* FirebugSparks.sks in Resources */,
+				D93A522619C07AFD0027A2FD /* PlayerHitWall.sks in Resources */,
+				D93A524319C07AFD0027A2FD /* Win.mp3 in Resources */,
+				D93A523919C07AFD0027A2FD /* KillBug-4.mp3 in Resources */,
 				D93A51B819C07A0D0027A2FD /* InfoPlist.strings in Resources */,
+				D93A522119C07AFD0027A2FD /* scenery.atlas in Resources */,
+				D93A522819C07AFD0027A2FD /* Rock.png in Resources */,
+				D93A523519C07AFD0027A2FD /* KillBug-11.mp3 in Resources */,
+				D93A522B19C07AFD0027A2FD /* Star.png in Resources */,
+				D93A523F19C07AFD0027A2FD /* Lose.mp3 in Resources */,
+				D93A524119C07AFD0027A2FD /* PlayerMove.mp3 in Resources */,
+				D93A523419C07AFD0027A2FD /* KillBug-10.mp3 in Resources */,
+				D93A522D19C07AFD0027A2FD /* WaterDrop.png in Resources */,
+				D93A522319C07AFD0027A2FD /* FirebugSmoke.sks in Resources */,
 				D93A51CB19C07A0E0027A2FD /* Images.xcassets in Resources */,
 				D93A51C919C07A0E0027A2FD /* Spaceship.png in Resources */,
+				D93A522219C07AFD0027A2FD /* BugSplatter.sks in Resources */,
+				D93A523619C07AFD0027A2FD /* KillBug-12.mp3 in Resources */,
+				D93A524019C07AFD0027A2FD /* Music.mp3 in Resources */,
+				D93A523319C07AFD0027A2FD /* KillBug-1.mp3 in Resources */,
+				D93A522519C07AFD0027A2FD /* Leaf.png in Resources */,
+				D93A522019C07AFD0027A2FD /* characters.atlas in Resources */,
 				D93A51C119C07A0D0027A2FD /* Main.storyboard in Resources */,
+				D93A522719C07AFD0027A2FD /* PlayerTrail.sks in Resources */,
+				D93A522919C07AFD0027A2FD /* Spark.png in Resources */,
+				D93A523719C07AFD0027A2FD /* KillBug-2.mp3 in Resources */,
+				D93A522A19C07AFD0027A2FD /* Splat.png in Resources */,
+				D93A523B19C07AFD0027A2FD /* KillBug-6.mp3 in Resources */,
+				D93A523219C07AFD0027A2FD /* HitWater.mp3 in Resources */,
+				D93A522F19C07AFD0027A2FD /* HitFireBug.mp3 in Resources */,
+				D93A523E19C07AFD0027A2FD /* KillBug-9.mp3 in Resources */,
+				D93A522C19C07AFD0027A2FD /* TreeSmash.sks in Resources */,
+				D93A523D19C07AFD0027A2FD /* KillBug-8.mp3 in Resources */,
+				D93A524219C07AFD0027A2FD /* TickTock.mp3 in Resources */,
+				D93A523819C07AFD0027A2FD /* KillBug-3.mp3 in Resources */,
+				D93A523019C07AFD0027A2FD /* HitTree.mp3 in Resources */,
+				D93A523119C07AFD0027A2FD /* HitWall.mp3 in Resources */,
+				D93A522E19C07AFD0027A2FD /* DrownFireBug.mp3 in Resources */,
+				D93A523C19C07AFD0027A2FD /* KillBug-7.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
