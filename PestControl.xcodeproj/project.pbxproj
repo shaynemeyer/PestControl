@@ -24,6 +24,11 @@
 		D93A51D419C07A100027A2FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AF19C07A0D0027A2FD /* UIKit.framework */; };
 		D93A51DC19C07A100027A2FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D93A51DA19C07A100027A2FD /* InfoPlist.strings */; };
 		D93A51DE19C07A100027A2FD /* PestControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51DD19C07A100027A2FD /* PestControlTests.m */; };
+		D93A51F219C07A590027A2FD /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51E919C07A590027A2FD /* SKAction+SKTExtras.m */; };
+		D93A51F319C07A590027A2FD /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51EB19C07A590027A2FD /* SKEmitterNode+SKTExtras.m */; };
+		D93A51F419C07A590027A2FD /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51ED19C07A590027A2FD /* SKNode+SKTExtras.m */; };
+		D93A51F519C07A590027A2FD /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A51EF19C07A590027A2FD /* SKTAudio.m */; };
+		D93A51F619C07A590027A2FD /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D93A51F119C07A590027A2FD /* SKTUtils.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,16 @@
 		D93A51D919C07A100027A2FD /* PestControlTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PestControlTests-Info.plist"; sourceTree = "<group>"; };
 		D93A51DB19C07A100027A2FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D93A51DD19C07A100027A2FD /* PestControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PestControlTests.m; sourceTree = "<group>"; };
+		D93A51E819C07A590027A2FD /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
+		D93A51E919C07A590027A2FD /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
+		D93A51EA19C07A590027A2FD /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		D93A51EB19C07A590027A2FD /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
+		D93A51EC19C07A590027A2FD /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
+		D93A51ED19C07A590027A2FD /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
+		D93A51EE19C07A590027A2FD /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
+		D93A51EF19C07A590027A2FD /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
+		D93A51F019C07A590027A2FD /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		D93A51F119C07A590027A2FD /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +136,7 @@
 		D93A51B319C07A0D0027A2FD /* PestControl */ = {
 			isa = PBXGroup;
 			children = (
+				D93A51E719C07A590027A2FD /* SKTUtils */,
 				D93A51BC19C07A0D0027A2FD /* AppDelegate.h */,
 				D93A51BD19C07A0D0027A2FD /* AppDelegate.m */,
 				D93A51BF19C07A0D0027A2FD /* Main.storyboard */,
@@ -162,6 +178,23 @@
 				D93A51DA19C07A100027A2FD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D93A51E719C07A590027A2FD /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D93A51E819C07A590027A2FD /* SKAction+SKTExtras.h */,
+				D93A51E919C07A590027A2FD /* SKAction+SKTExtras.m */,
+				D93A51EA19C07A590027A2FD /* SKEmitterNode+SKTExtras.h */,
+				D93A51EB19C07A590027A2FD /* SKEmitterNode+SKTExtras.m */,
+				D93A51EC19C07A590027A2FD /* SKNode+SKTExtras.h */,
+				D93A51ED19C07A590027A2FD /* SKNode+SKTExtras.m */,
+				D93A51EE19C07A590027A2FD /* SKTAudio.h */,
+				D93A51EF19C07A590027A2FD /* SKTAudio.m */,
+				D93A51F019C07A590027A2FD /* SKTUtils.h */,
+				D93A51F119C07A590027A2FD /* SKTUtils.mm */,
+			);
+			path = SKTUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +296,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93A51C719C07A0D0027A2FD /* MyScene.m in Sources */,
+				D93A51F519C07A590027A2FD /* SKTAudio.m in Sources */,
 				D93A51C419C07A0D0027A2FD /* ViewController.m in Sources */,
+				D93A51F319C07A590027A2FD /* SKEmitterNode+SKTExtras.m in Sources */,
+				D93A51F619C07A590027A2FD /* SKTUtils.mm in Sources */,
+				D93A51F219C07A590027A2FD /* SKAction+SKTExtras.m in Sources */,
 				D93A51BE19C07A0D0027A2FD /* AppDelegate.m in Sources */,
+				D93A51F419C07A590027A2FD /* SKNode+SKTExtras.m in Sources */,
 				D93A51BA19C07A0D0027A2FD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
