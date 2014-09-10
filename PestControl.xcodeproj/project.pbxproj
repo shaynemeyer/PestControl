@@ -65,6 +65,20 @@
 		D93A524119C07AFD0027A2FD /* PlayerMove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521D19C07AFD0027A2FD /* PlayerMove.mp3 */; };
 		D93A524219C07AFD0027A2FD /* TickTock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521E19C07AFD0027A2FD /* TickTock.mp3 */; };
 		D93A524319C07AFD0027A2FD /* Win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D93A521F19C07AFD0027A2FD /* Win.mp3 */; };
+		D93A524A19C07BE70027A2FD /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A524719C07BE70027A2FD /* SKTEffects.m */; };
+		D93A524B19C07BE70027A2FD /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A524919C07BE70027A2FD /* SKTTimingFunctions.m */; };
+		D93A525919C07BFE0027A2FD /* juicy-level-bg.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A524C19C07BFE0027A2FD /* juicy-level-bg.txt */; };
+		D93A525A19C07BFE0027A2FD /* juicy-level-breakables.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A524D19C07BFE0027A2FD /* juicy-level-breakables.txt */; };
+		D93A525B19C07BFE0027A2FD /* juicy-level-bugs.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A524E19C07BFE0027A2FD /* juicy-level-bugs.txt */; };
+		D93A525C19C07BFE0027A2FD /* JuicyLevels.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93A524F19C07BFE0027A2FD /* JuicyLevels.plist */; };
+		D93A525D19C07BFE0027A2FD /* level-1-bg.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A525019C07BFE0027A2FD /* level-1-bg.txt */; };
+		D93A525E19C07BFE0027A2FD /* level-1-bugs.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A525119C07BFE0027A2FD /* level-1-bugs.txt */; };
+		D93A525F19C07BFE0027A2FD /* level-2-bg.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A525219C07BFE0027A2FD /* level-2-bg.txt */; };
+		D93A526019C07BFE0027A2FD /* level-2-breakables.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A525319C07BFE0027A2FD /* level-2-breakables.txt */; };
+		D93A526119C07BFE0027A2FD /* level-2-bugs.txt in Resources */ = {isa = PBXBuildFile; fileRef = D93A525419C07BFE0027A2FD /* level-2-bugs.txt */; };
+		D93A526219C07BFE0027A2FD /* level-3-sample.tmx in Resources */ = {isa = PBXBuildFile; fileRef = D93A525519C07BFE0027A2FD /* level-3-sample.tmx */; };
+		D93A526319C07BFE0027A2FD /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93A525619C07BFE0027A2FD /* Levels.plist */; };
+		D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +161,23 @@
 		D93A521D19C07AFD0027A2FD /* PlayerMove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlayerMove.mp3; sourceTree = "<group>"; };
 		D93A521E19C07AFD0027A2FD /* TickTock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TickTock.mp3; sourceTree = "<group>"; };
 		D93A521F19C07AFD0027A2FD /* Win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Win.mp3; sourceTree = "<group>"; };
+		D93A524619C07BE70027A2FD /* SKTEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTEffects.h; sourceTree = "<group>"; };
+		D93A524719C07BE70027A2FD /* SKTEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTEffects.m; sourceTree = "<group>"; };
+		D93A524819C07BE70027A2FD /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
+		D93A524919C07BE70027A2FD /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
+		D93A524C19C07BFE0027A2FD /* juicy-level-bg.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "juicy-level-bg.txt"; sourceTree = "<group>"; };
+		D93A524D19C07BFE0027A2FD /* juicy-level-breakables.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "juicy-level-breakables.txt"; sourceTree = "<group>"; };
+		D93A524E19C07BFE0027A2FD /* juicy-level-bugs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "juicy-level-bugs.txt"; sourceTree = "<group>"; };
+		D93A524F19C07BFE0027A2FD /* JuicyLevels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JuicyLevels.plist; sourceTree = "<group>"; };
+		D93A525019C07BFE0027A2FD /* level-1-bg.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "level-1-bg.txt"; sourceTree = "<group>"; };
+		D93A525119C07BFE0027A2FD /* level-1-bugs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "level-1-bugs.txt"; sourceTree = "<group>"; };
+		D93A525219C07BFE0027A2FD /* level-2-bg.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "level-2-bg.txt"; sourceTree = "<group>"; };
+		D93A525319C07BFE0027A2FD /* level-2-breakables.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "level-2-breakables.txt"; sourceTree = "<group>"; };
+		D93A525419C07BFE0027A2FD /* level-2-bugs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "level-2-bugs.txt"; sourceTree = "<group>"; };
+		D93A525519C07BFE0027A2FD /* level-3-sample.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level-3-sample.tmx"; sourceTree = "<group>"; };
+		D93A525619C07BFE0027A2FD /* Levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Levels.plist; sourceTree = "<group>"; };
+		D93A525719C07BFE0027A2FD /* TileMapLayerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayerLoader.h; sourceTree = "<group>"; };
+		D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayerLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +304,7 @@
 		D93A51F719C07AE30027A2FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D93A524519C07BE70027A2FD /* Extra Source Code */,
 				D93A51F819C07AFD0027A2FD /* Art */,
 				D93A524419C07B560027A2FD /* Levels */,
 			);
@@ -349,8 +381,32 @@
 		D93A524419C07B560027A2FD /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				D93A524C19C07BFE0027A2FD /* juicy-level-bg.txt */,
+				D93A524D19C07BFE0027A2FD /* juicy-level-breakables.txt */,
+				D93A524E19C07BFE0027A2FD /* juicy-level-bugs.txt */,
+				D93A524F19C07BFE0027A2FD /* JuicyLevels.plist */,
+				D93A525019C07BFE0027A2FD /* level-1-bg.txt */,
+				D93A525119C07BFE0027A2FD /* level-1-bugs.txt */,
+				D93A525219C07BFE0027A2FD /* level-2-bg.txt */,
+				D93A525319C07BFE0027A2FD /* level-2-breakables.txt */,
+				D93A525419C07BFE0027A2FD /* level-2-bugs.txt */,
+				D93A525519C07BFE0027A2FD /* level-3-sample.tmx */,
+				D93A525619C07BFE0027A2FD /* Levels.plist */,
+				D93A525719C07BFE0027A2FD /* TileMapLayerLoader.h */,
+				D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */,
 			);
 			name = Levels;
+			sourceTree = "<group>";
+		};
+		D93A524519C07BE70027A2FD /* Extra Source Code */ = {
+			isa = PBXGroup;
+			children = (
+				D93A524619C07BE70027A2FD /* SKTEffects.h */,
+				D93A524719C07BE70027A2FD /* SKTEffects.m */,
+				D93A524819C07BE70027A2FD /* SKTTimingFunctions.h */,
+				D93A524919C07BE70027A2FD /* SKTTimingFunctions.m */,
+			);
+			path = "Extra Source Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,30 +487,39 @@
 			files = (
 				D93A523A19C07AFD0027A2FD /* KillBug-5.mp3 in Resources */,
 				D93A522419C07AFD0027A2FD /* FirebugSparks.sks in Resources */,
+				D93A525C19C07BFE0027A2FD /* JuicyLevels.plist in Resources */,
+				D93A526119C07BFE0027A2FD /* level-2-bugs.txt in Resources */,
 				D93A522619C07AFD0027A2FD /* PlayerHitWall.sks in Resources */,
+				D93A526019C07BFE0027A2FD /* level-2-breakables.txt in Resources */,
+				D93A525E19C07BFE0027A2FD /* level-1-bugs.txt in Resources */,
 				D93A524319C07AFD0027A2FD /* Win.mp3 in Resources */,
 				D93A523919C07AFD0027A2FD /* KillBug-4.mp3 in Resources */,
 				D93A51B819C07A0D0027A2FD /* InfoPlist.strings in Resources */,
 				D93A522119C07AFD0027A2FD /* scenery.atlas in Resources */,
 				D93A522819C07AFD0027A2FD /* Rock.png in Resources */,
+				D93A525A19C07BFE0027A2FD /* juicy-level-breakables.txt in Resources */,
 				D93A523519C07AFD0027A2FD /* KillBug-11.mp3 in Resources */,
 				D93A522B19C07AFD0027A2FD /* Star.png in Resources */,
 				D93A523F19C07AFD0027A2FD /* Lose.mp3 in Resources */,
+				D93A525B19C07BFE0027A2FD /* juicy-level-bugs.txt in Resources */,
 				D93A524119C07AFD0027A2FD /* PlayerMove.mp3 in Resources */,
 				D93A523419C07AFD0027A2FD /* KillBug-10.mp3 in Resources */,
 				D93A522D19C07AFD0027A2FD /* WaterDrop.png in Resources */,
 				D93A522319C07AFD0027A2FD /* FirebugSmoke.sks in Resources */,
 				D93A51CB19C07A0E0027A2FD /* Images.xcassets in Resources */,
 				D93A51C919C07A0E0027A2FD /* Spaceship.png in Resources */,
+				D93A525D19C07BFE0027A2FD /* level-1-bg.txt in Resources */,
 				D93A522219C07AFD0027A2FD /* BugSplatter.sks in Resources */,
 				D93A523619C07AFD0027A2FD /* KillBug-12.mp3 in Resources */,
 				D93A524019C07AFD0027A2FD /* Music.mp3 in Resources */,
 				D93A523319C07AFD0027A2FD /* KillBug-1.mp3 in Resources */,
 				D93A522519C07AFD0027A2FD /* Leaf.png in Resources */,
 				D93A522019C07AFD0027A2FD /* characters.atlas in Resources */,
+				D93A525919C07BFE0027A2FD /* juicy-level-bg.txt in Resources */,
 				D93A51C119C07A0D0027A2FD /* Main.storyboard in Resources */,
 				D93A522719C07AFD0027A2FD /* PlayerTrail.sks in Resources */,
 				D93A522919C07AFD0027A2FD /* Spark.png in Resources */,
+				D93A526219C07BFE0027A2FD /* level-3-sample.tmx in Resources */,
 				D93A523719C07AFD0027A2FD /* KillBug-2.mp3 in Resources */,
 				D93A522A19C07AFD0027A2FD /* Splat.png in Resources */,
 				D93A523B19C07AFD0027A2FD /* KillBug-6.mp3 in Resources */,
@@ -467,6 +532,8 @@
 				D93A523819C07AFD0027A2FD /* KillBug-3.mp3 in Resources */,
 				D93A523019C07AFD0027A2FD /* HitTree.mp3 in Resources */,
 				D93A523119C07AFD0027A2FD /* HitWall.mp3 in Resources */,
+				D93A526319C07BFE0027A2FD /* Levels.plist in Resources */,
+				D93A525F19C07BFE0027A2FD /* level-2-bg.txt in Resources */,
 				D93A522E19C07AFD0027A2FD /* DrownFireBug.mp3 in Resources */,
 				D93A523C19C07AFD0027A2FD /* KillBug-7.mp3 in Resources */,
 			);
@@ -488,10 +555,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93A51C719C07A0D0027A2FD /* MyScene.m in Sources */,
+				D93A524A19C07BE70027A2FD /* SKTEffects.m in Sources */,
 				D93A51F519C07A590027A2FD /* SKTAudio.m in Sources */,
 				D93A51C419C07A0D0027A2FD /* ViewController.m in Sources */,
 				D93A51F319C07A590027A2FD /* SKEmitterNode+SKTExtras.m in Sources */,
+				D93A524B19C07BE70027A2FD /* SKTTimingFunctions.m in Sources */,
 				D93A51F619C07A590027A2FD /* SKTUtils.mm in Sources */,
+				D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */,
 				D93A51F219C07A590027A2FD /* SKAction+SKTExtras.m in Sources */,
 				D93A51BE19C07A0D0027A2FD /* AppDelegate.m in Sources */,
 				D93A51F419C07A590027A2FD /* SKNode+SKTExtras.m in Sources */,
