@@ -10,10 +10,14 @@
 #import "TileMapLayer.h"
 
 @implementation MyScene
+{
+    SKNode *_worldNode;
+    TileMapLayer *_bgLayer;
+}
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        [self addChild:[self createScenery]];
+        [self createWorld];
     }
     return self;
 }
@@ -45,6 +49,17 @@
                                                       @"xoooooooxxxxoox",
                                                       @"xoooooooxooooox",
                                                       @"xxxxxxxxxxxxxxx"]];
+}
+
+-(void)createWorld
+{
+    _bgLayer = [self createScenery];
+    _worldNode = [SKNode node];
+    [_worldNode addChild:_bgLayer];
+    [self addChild:_worldNode];
+    
+    self.anchorPoint = CGPointMake(0.5, 0.5);
+    _worldNode.position = CGPointMake(-_bgLayer.layerSize.width / 2, -_bgLayer.layerSize.height / 2);
 }
 
 @end
