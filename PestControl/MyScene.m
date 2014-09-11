@@ -9,16 +9,20 @@
 #import "MyScene.h"
 #import "TileMapLayer.h"
 #import "TileMapLayerLoader.h"
+#import "Player.h"
 
 @implementation MyScene
 {
     SKNode *_worldNode;
     TileMapLayer *_bgLayer;
+    Player *_player;
 }
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         [self createWorld];
+        [self createCharacters];
+        [self centerViewOn:_player.position];
     }
     return self;
 }
@@ -60,6 +64,13 @@
     
     self.anchorPoint = CGPointMake(0.5, 0.5);
     _worldNode.position = CGPointMake(-_bgLayer.layerSize.width / 2, -_bgLayer.layerSize.height / 2);
+}
+
+-(void)createCharacters
+{
+    _player = [Player node];
+    _player.position = CGPointMake(300, 300);
+    [_worldNode addChild:_player];
 }
 
 @end

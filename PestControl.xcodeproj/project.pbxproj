@@ -79,6 +79,7 @@
 		D93A526319C07BFE0027A2FD /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93A525619C07BFE0027A2FD /* Levels.plist */; };
 		D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */; };
 		D93A526719C07CE80027A2FD /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A526619C07CE80027A2FD /* TileMapLayer.m */; };
+		D9B7B7D619C1D286001D8EB9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B7B7D519C1D286001D8EB9 /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,8 @@
 		D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayerLoader.m; sourceTree = "<group>"; };
 		D93A526519C07CE80027A2FD /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
 		D93A526619C07CE80027A2FD /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
+		D9B7B7D419C1D286001D8EB9 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		D9B7B7D519C1D286001D8EB9 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +252,8 @@
 				D93A51C319C07A0D0027A2FD /* ViewController.m */,
 				D93A51C519C07A0D0027A2FD /* MyScene.h */,
 				D93A51C619C07A0D0027A2FD /* MyScene.m */,
+				D9B7B7D419C1D286001D8EB9 /* Player.h */,
+				D9B7B7D519C1D286001D8EB9 /* Player.m */,
 				D93A526519C07CE80027A2FD /* TileMapLayer.h */,
 				D93A526619C07CE80027A2FD /* TileMapLayer.m */,
 				D93A51CA19C07A0E0027A2FD /* Images.xcassets */,
@@ -567,6 +572,7 @@
 				D93A51F219C07A590027A2FD /* SKAction+SKTExtras.m in Sources */,
 				D93A51BE19C07A0D0027A2FD /* AppDelegate.m in Sources */,
 				D93A51F419C07A590027A2FD /* SKNode+SKTExtras.m in Sources */,
+				D9B7B7D619C1D286001D8EB9 /* Player.m in Sources */,
 				D93A51BA19C07A0D0027A2FD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +780,7 @@
 				D93A51E319C07A100027A2FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D93A51E419C07A100027A2FD /* Build configuration list for PBXNativeTarget "PestControlTests" */ = {
 			isa = XCConfigurationList;
@@ -782,6 +789,7 @@
 				D93A51E619C07A100027A2FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
