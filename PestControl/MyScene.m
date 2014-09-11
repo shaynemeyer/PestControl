@@ -25,11 +25,21 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
+    UITouch *touch = [touches anyObject];
+    [self centerViewOn:[touch locationInNode:_worldNode]];
 
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+-(void)centerViewOn:(CGPoint)centerOn
+{
+    CGSize size = self.size;
+    CGFloat x = Clamp(centerOn.x, size.width / 2, _bgLayer.layerSize.width - size.width / 2);
+    CGFloat y = Clamp(centerOn.y, size.height / 2, _bgLayer.layerSize.height - size.height / 2);
+    _worldNode.position = CGPointMake(-x, -y);
 }
 
 
