@@ -43,7 +43,9 @@
     
     switch (tileCode) {
         case 'o':
-            tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"grass1"]];
+            tile = [SKSpriteNode spriteNodeWithTexture:
+                    [_atlas textureNamed:
+                     RandomFloat() < 0.1 ? @"grass2" : @"grass1"]];
             break;
         case 'x':
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
@@ -52,7 +54,9 @@
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"stone"]];
             break;
         case 'w':
-            tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"water1"]];
+            tile = [SKSpriteNode spriteNodeWithTexture:
+                    [_atlas textureNamed:
+                     RandomFloat() < 0.1 ? @"water2" : @"water1"]];
             break;
         default:
             NSLog(@"Unknown tile code: %d", tileCode);
