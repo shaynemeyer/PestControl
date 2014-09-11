@@ -19,6 +19,9 @@
         _atlas = [SKTextureAtlas atlasNamed:atlasName];
         _tileSize = tileSize;
         
+        _gridSize = CGSizeMake([grid.firstObject length], grid.count);
+        _layerSize = CGSizeMake(_tileSize.width * _gridSize.width, _tileSize.height * _gridSize.height);
+        
         for (int row = 0; row < grid.count; row++) {
             NSString *line = grid[row];
             for (int col = 0; col < line.length; col++) {
@@ -49,13 +52,14 @@
             break;
     }
     tile.blendMode = SKBlendModeReplace;
+    tile.texture.filteringMode = SKTextureFilteringNearest; // makes image rendering crisp for retina.
     return tile;
 }
 
 -(CGPoint)positionForRow:(NSInteger)row col:(NSInteger)col
 {
     return CGPointMake(col * self.tileSize.width + self.tileSize.width / 2,
-                       row * self.tileSize.height + self.tileSize.height / 2);
+                       self.layerSize.height - (row * self.tileSize.height + self.tileSize.height / 2));
 }
 
 @end

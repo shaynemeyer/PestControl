@@ -10,6 +10,9 @@
 
 @interface TileMapLayer : SKNode
 
+@property (readonly, nonatomic) CGSize gridSize;
+@property (readonly, nonatomic) CGSize layerSize;
+
 @property (readonly, nonatomic) CGSize tileSize;
 
 -(instancetype)initWithAtlasNamed:(NSString *)atlasName tileSize:(CGSize)tileSize grid:(NSArray *)grid;
