@@ -40,15 +40,25 @@
 
 -(void)centerViewOn:(CGPoint)centerOn
 {
+    _worldNode.position = [self pointToCenterViewOn:centerOn];
+}
+
+-(CGPoint)pointToCenterViewOn:(CGPoint)centerOn
+{
     CGSize size = self.size;
     CGFloat x = Clamp(centerOn.x, size.width / 2, _bgLayer.layerSize.width - size.width / 2);
     CGFloat y = Clamp(centerOn.y, size.height / 2, _bgLayer.layerSize.height - size.height / 2);
-    _worldNode.position = CGPointMake(-x, -y);
+    return CGPointMake(-x, -y);
 }
 
 -(void)didSimulatePhysics
 {
-    [self centerViewOn:_player.position];
+    CGPoint target = [self pointToCenterViewOn:_player.position];
+    CGPoint newPosition = _worldNode.position;
+    newPosition.x += (target.x - _worldNode.position.x) * 0.1f;
+    newPosition.y += (target.y - _worldNode.position.y) * 0.1f;
+    
+    _worldNode.position = newPosition;
 }
 
 #pragma mark
@@ -84,5 +94,8 @@
     _player.position = CGPointMake(300, 300);
     [_worldNode addChild:_player];
 }
+
+
+
 
 @end
