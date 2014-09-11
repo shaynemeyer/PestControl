@@ -47,6 +47,13 @@
             break;
         case 'x':
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
+            break;
+        case '=':
+            tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"stone"]];
+            break;
+        case 'w':
+            tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"water1"]];
+            break;
         default:
             NSLog(@"Unknown tile code: %d", tileCode);
             break;

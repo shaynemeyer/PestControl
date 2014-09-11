@@ -8,6 +8,7 @@
 
 #import "MyScene.h"
 #import "TileMapLayer.h"
+#import "TileMapLayerLoader.h"
 
 @implementation MyScene
 {
@@ -37,18 +38,7 @@
 
 -(TileMapLayer *)createScenery
 {
-    return [[TileMapLayer alloc] initWithAtlasNamed:@"scenery"
-                                           tileSize:CGSizeMake(32, 32)
-                                               grid:@[@"xxxxxxxxxxxxxxx",
-                                                      @"xooooooooooooox",
-                                                      @"xooooooooooooox",
-                                                      @"xooooooooooooox",
-                                                      @"xooooooooooooox",
-                                                      @"xoooooooxooooox",
-                                                      @"xoooooooxooooox",
-                                                      @"xoooooooxxxxoox",
-                                                      @"xoooooooxooooox",
-                                                      @"xxxxxxxxxxxxxxx"]];
+    return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bg.txt"];
 }
 
 -(void)createWorld
