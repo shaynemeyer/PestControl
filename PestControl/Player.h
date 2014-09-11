@@ -10,4 +10,6 @@
 
 @interface Player : SKSpriteNode
 
+-(void)moveToward:(CGPoint)targetPosition;
+
 @end

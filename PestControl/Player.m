@@ -18,11 +18,27 @@
     
     if (self = [super initWithTexture:texture]) {
         self.name = @"player";
-        // more setup later.
+        // use a circle thats a bit smaller.
+        CGFloat minDiam = MIN(self.size.width, self.size.height);
+        minDiam = MAX(minDiam-16, 4);
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:minDiam / 2.0];
+        // enable collision detection.
+        self.physicsBody.usesPreciseCollisionDetection = YES;
+        // 
+        self.physicsBody.allowsRotation = NO;
+        self.physicsBody.restitution = 1;
+        self.physicsBody.friction = 0;
+        self.physicsBody.linearDamping = 0;
     }
     
     return self;
 }
 
+-(void)moveToward:(CGPoint)targetPosition
+{
+    CGPoint targetVector = CGPointNormalize(CGPointSubtract(targetPosition, self.position));
+    targetVector = CGPointMultiplyScalar(targetVector, 300);
+    self.physicsBody.velocity = CGVectorMake(targetVector.x, targetVector.y);
+}
 
 @end

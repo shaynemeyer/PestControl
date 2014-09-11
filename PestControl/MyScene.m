@@ -30,7 +30,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     UITouch *touch = [touches anyObject];
-    [self centerViewOn:[touch locationInNode:_worldNode]];
+    [_player moveToward:[touch locationInNode:_worldNode]];
 
 }
 
@@ -46,6 +46,10 @@
     _worldNode.position = CGPointMake(-x, -y);
 }
 
+-(void)didSimulatePhysics
+{
+    [self centerViewOn:_player.position];
+}
 
 #pragma mark
 #pragma mark - Create Scene Methods
@@ -64,6 +68,14 @@
     
     self.anchorPoint = CGPointMake(0.5, 0.5);
     _worldNode.position = CGPointMake(-_bgLayer.layerSize.width / 2, -_bgLayer.layerSize.height / 2);
+    self.physicsWorld.gravity = CGVectorMake(0, 0);
+    
+    // define boundary
+    SKNode *bounds = [SKNode node];
+    bounds.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, _bgLayer.layerSize.width, _bgLayer.layerSize.height)];
+    bounds.physicsBody.categoryBitMask = PCBoundaryCategory;
+    bounds.physicsBody.friction = 0;
+    [_worldNode addChild:bounds];
 }
 
 -(void)createCharacters
