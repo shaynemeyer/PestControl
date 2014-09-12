@@ -7,6 +7,8 @@
 //
 
 #import "TileMapLayer.h"
+#import "Bug.h"
+#import "Player.h"
 
 @implementation TileMapLayer
 {
@@ -58,6 +60,13 @@
                     [_atlas textureNamed:
                      RandomFloat() < 0.1 ? @"water2" : @"water1"]];
             break;
+        case '.':
+            return nil;
+            break;
+        case 'b':
+            return [Bug node]; // Use SpriteKit default blend mode which support transparency.
+            break;
+            
         default:
             NSLog(@"Unknown tile code: %d", tileCode);
             break;

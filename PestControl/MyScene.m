@@ -10,12 +10,14 @@
 #import "TileMapLayer.h"
 #import "TileMapLayerLoader.h"
 #import "Player.h"
+#import "Bug.h"
 
 @implementation MyScene
 {
     SKNode *_worldNode;
     TileMapLayer *_bgLayer;
     Player *_player;
+    TileMapLayer *_bugLayer;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -90,6 +92,9 @@
 
 -(void)createCharacters
 {
+    _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bugs.txt"];
+    [_worldNode addChild:_bugLayer];
+    
     _player = [Player node];
     _player.position = CGPointMake(300, 300);
     [_worldNode addChild:_player];

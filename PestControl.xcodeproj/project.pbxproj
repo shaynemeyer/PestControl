@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D932425619C3154900CA28AB /* Bug.m in Sources */ = {isa = PBXBuildFile; fileRef = D932425519C3154900CA28AB /* Bug.m */; };
 		D93A51AC19C07A0D0027A2FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AB19C07A0D0027A2FD /* Foundation.framework */; };
 		D93A51AE19C07A0D0027A2FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AD19C07A0D0027A2FD /* CoreGraphics.framework */; };
 		D93A51B019C07A0D0027A2FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AF19C07A0D0027A2FD /* UIKit.framework */; };
@@ -93,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D932425419C3154900CA28AB /* Bug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bug.h; sourceTree = "<group>"; };
+		D932425519C3154900CA28AB /* Bug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bug.m; sourceTree = "<group>"; };
 		D93A51A819C07A0D0027A2FD /* PestControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PestControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93A51AB19C07A0D0027A2FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D93A51AD19C07A0D0027A2FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -247,6 +250,8 @@
 				D93A51E719C07A590027A2FD /* SKTUtils */,
 				D93A51BC19C07A0D0027A2FD /* AppDelegate.h */,
 				D93A51BD19C07A0D0027A2FD /* AppDelegate.m */,
+				D932425419C3154900CA28AB /* Bug.h */,
+				D932425519C3154900CA28AB /* Bug.m */,
 				D93A51BF19C07A0D0027A2FD /* Main.storyboard */,
 				D93A51C219C07A0D0027A2FD /* ViewController.h */,
 				D93A51C319C07A0D0027A2FD /* ViewController.m */,
@@ -560,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D932425619C3154900CA28AB /* Bug.m in Sources */,
 				D93A51C719C07A0D0027A2FD /* MyScene.m in Sources */,
 				D93A524A19C07BE70027A2FD /* SKTEffects.m in Sources */,
 				D93A51F519C07A590027A2FD /* SKTAudio.m in Sources */,
