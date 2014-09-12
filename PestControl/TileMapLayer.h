@@ -16,5 +16,8 @@
 @property (readonly, nonatomic) CGSize tileSize;
 
 -(instancetype)initWithAtlasNamed:(NSString *)atlasName tileSize:(CGSize)tileSize grid:(NSArray *)grid;
+-(BOOL)isValidTileCoord:(CGPoint)coord;
+-(CGPoint)pointForCoord:(CGPoint)coord;
+-(CGPoint)coordForPoint:(CGPoint)point;
 
 @end

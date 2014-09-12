@@ -84,4 +84,29 @@
                        self.layerSize.height - (row * self.tileSize.height + self.tileSize.height / 2));
 }
 
+#pragma mark 
+#pragma mark - Move methods
+
+// checks tile coordinates against the layer's grid to ensure they are within the range possible.
+-(BOOL)isValidTileCoord:(CGPoint)coord
+{
+    return (coord.x >= 0 &&
+            coord.y >= 0 &&
+            coord.x < self.gridSize.width &&
+            coord.y < self.gridSize.height);
+}
+
+// returns the grid coordinates for the give (x,y) position in the layer.
+-(CGPoint)coordForPoint:(CGPoint)point
+{
+    return CGPointMake((int)(point.x / self.tileSize.width),
+                       (int)((point.y - self.tileSize.height) / -self.tileSize.height));
+}
+
+// returns the (x,y) position at the center of the given grid coordinates.
+-(CGPoint)pointForCoord:(CGPoint)coord
+{
+    return [self positionForRow:coord.y col:coord.x];
+}
+
 @end
