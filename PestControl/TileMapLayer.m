@@ -66,7 +66,9 @@
         case 'b':
             return [Bug node]; // Use SpriteKit default blend mode which support transparency.
             break;
-            
+        case 'p':
+            return [Player node];
+            break;
         default:
             NSLog(@"Unknown tile code: %d", tileCode);
             break;

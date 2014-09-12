@@ -95,8 +95,8 @@
     _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bugs.txt"];
     [_worldNode addChild:_bugLayer];
     
-    _player = [Player node];
-    _player.position = CGPointMake(300, 300);
+    _player = (Player *)[_bugLayer childNodeWithName:@"player"];
+    [_player removeFromParent];
     [_worldNode addChild:_player];
 }
 
