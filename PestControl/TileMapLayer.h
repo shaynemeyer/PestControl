@@ -20,4 +20,7 @@
 -(CGPoint)pointForCoord:(CGPoint)coord;
 -(CGPoint)coordForPoint:(CGPoint)point;
 
+-(SKNode *)tileAtCoord:(CGPoint)coord;
+-(SKNode *)tileAtPoint:(CGPoint)point;
+
 @end

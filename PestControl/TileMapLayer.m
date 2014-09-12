@@ -118,4 +118,21 @@
     return [self positionForRow:coord.y col:coord.x];
 }
 
+#pragma mark
+#pragma mark - TileAt Methods
+
+-(SKNode *)tileAtCoord:(CGPoint)coord
+{
+    return [self tileAtPoint:[self pointForCoord:coord]];
+}
+
+-(SKNode *)tileAtPoint:(CGPoint)point
+{
+    SKNode *n = [self nodeAtPoint:point];
+    while (n && n != self && n.parent != self) {
+        n = n.parent;
+    }
+    return n.parent == self ? n : nil;
+}
+
 @end
