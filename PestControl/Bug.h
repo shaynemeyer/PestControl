@@ -10,4 +10,6 @@
 
 @interface Bug : SKSpriteNode
 
+-(void)start;
+
 @end

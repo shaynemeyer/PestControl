@@ -104,6 +104,10 @@
     _player = (Player *)[_bugLayer childNodeWithName:@"player"];
     [_player removeFromParent];
     [_worldNode addChild:_player];
+    
+    [_bugLayer enumerateChildNodesWithName:@"bug" usingBlock:^(SKNode *node, BOOL *stop) {
+        [(Bug *)node start];
+    }];
 }
 
 #pragma mark
