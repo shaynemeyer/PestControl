@@ -9,6 +9,7 @@
 #import "TileMapLayer.h"
 #import "Bug.h"
 #import "Player.h"
+#import "MyScene.h"
 
 @implementation TileMapLayer
 {
@@ -51,6 +52,10 @@
             break;
         case 'x':
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
+            tile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tile.size];
+            tile.physicsBody.categoryBitMask = PCWallCategory;
+            tile.physicsBody.dynamic = NO;
+            tile.physicsBody.friction = 0;
             break;
         case '=':
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"stone"]];
@@ -59,6 +64,10 @@
             tile = [SKSpriteNode spriteNodeWithTexture:
                     [_atlas textureNamed:
                      RandomFloat() < 0.1 ? @"water2" : @"water1"]];
+            tile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tile.size];
+            tile.physicsBody.categoryBitMask = PCWaterCategory;
+            tile.physicsBody.dynamic = NO;
+            tile.physicsBody.friction = 0;
             break;
         case '.':
             return nil;
