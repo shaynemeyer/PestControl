@@ -33,6 +33,8 @@
         
         self.physicsBody.categoryBitMask = PCPlayerCategory;
         self.physicsBody.contactTestBitMask = 0xFFFFFFFF;
+        
+        self.physicsBody.collisionBitMask = PCBoundaryCategory;
     }
     
     return self;
