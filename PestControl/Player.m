@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "MyScene.h"
 
 @implementation Player
 
@@ -29,6 +30,9 @@
         self.physicsBody.restitution = 1;
         self.physicsBody.friction = 0;
         self.physicsBody.linearDamping = 0;
+        
+        self.physicsBody.categoryBitMask = PCPlayerCategory;
+        self.physicsBody.contactTestBitMask = 0xFFFFFFFF;
     }
     
     return self;

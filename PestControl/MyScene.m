@@ -12,6 +12,10 @@
 #import "Player.h"
 #import "Bug.h"
 
+@interface MyScene () <SKPhysicsContactDelegate>
+
+@end
+
 @implementation MyScene
 {
     SKNode *_worldNode;
@@ -88,6 +92,8 @@
     bounds.physicsBody.categoryBitMask = PCBoundaryCategory;
     bounds.physicsBody.friction = 0;
     [_worldNode addChild:bounds];
+    
+    self.physicsWorld.contactDelegate = self;
 }
 
 -(void)createCharacters
@@ -100,7 +106,17 @@
     [_worldNode addChild:_player];
 }
 
+#pragma mark
+#pragma mark - DidBeginContact Method
 
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *other = (contact.bodyA.categoryBitMask == PCPlayerCategory ? contact.bodyB : contact.bodyA);
+    
+    if (other.categoryBitMask == PCPlayerCategory) {
+        [other.node removeFromParent];
+    }
+}
 
 
 @end

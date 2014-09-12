@@ -7,6 +7,7 @@
 //
 
 #import "Bug.h"
+#import "MyScene.h"
 
 @implementation Bug
 
@@ -18,6 +19,11 @@
     
     if (self = [super initWithTexture:texture]) {
         self.name = @"bug";
+        CGFloat minDiam = MIN(self.size.width, self.size.height);
+        minDiam = MAX(minDiam-8, 8);
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:minDiam / 2.0];
+        self.physicsBody.categoryBitMask = PCBugCategory;
+        self.physicsBody.collisionBitMask = 0;
     }
     
     return self;

@@ -10,7 +10,9 @@
 
 typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
 {
-    PCBoundaryCategory = 1 << 0,
+    PCBoundaryCategory  = 1 << 0,
+    PCPlayerCategory    = 1 << 1,
+    PCBugCategory       = 1 << 2,
 };
 
 @interface MyScene : SKScene
