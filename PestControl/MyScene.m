@@ -11,6 +11,7 @@
 #import "TileMapLayerLoader.h"
 #import "Player.h"
 #import "Bug.h"
+#import "Breakable.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -22,6 +23,7 @@
     TileMapLayer *_bgLayer;
     Player *_player;
     TileMapLayer *_bugLayer;
+    TileMapLayer *_breakableLayer;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -94,6 +96,11 @@
     [_worldNode addChild:bounds];
     
     self.physicsWorld.contactDelegate = self;
+    
+    _breakableLayer = [self createBreakables];
+    if (_breakableLayer) {
+        [_worldNode addChild:_breakableLayer];
+    }
 }
 
 -(void)createCharacters
@@ -117,8 +124,11 @@
 {
     SKPhysicsBody *other = (contact.bodyA.categoryBitMask == PCPlayerCategory ? contact.bodyB : contact.bodyA);
     
-    if (other.categoryBitMask == PCPlayerCategory) {
+    if (other.categoryBitMask == PCBugCategory) {
         [other.node removeFromParent];
+    } else if (other.categoryBitMask & PCBreakableCategory) {
+        Breakable *breakable = (Breakable *)other.node;
+        [breakable smashBreakable];
     }
 }
 
@@ -135,12 +145,20 @@
     
 }
 
+- (TileMapLayer *)createBreakables
+{
+    return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-breakables.txt"];
+}
+
 #pragma mark
 #pragma mark - TileAt Methods
 
 -(BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props
 {
-    SKNode *tile = [_bgLayer tileAtPoint:point];
+    SKNode *tile = [_breakableLayer tileAtPoint:point];
+    if (!tile) {
+        tile = [_bgLayer tileAtPoint:point];
+    }
     return tile.physicsBody.categoryBitMask & props;
 }
 
