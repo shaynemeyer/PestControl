@@ -16,6 +16,7 @@ typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
     PCWallCategory      = 1 << 3,
     PCWaterCategory     = 1 << 4,
     PCBreakableCategory = 1 << 5,
+    PCFireBugCategory   = 1 << 6,
 };
 
 @interface MyScene : SKScene

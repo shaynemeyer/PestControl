@@ -11,6 +11,7 @@
 #import "Player.h"
 #import "MyScene.h"
 #import "Breakable.h"
+#import "FireBug.h"
 
 @implementation TileMapLayer
 {
@@ -82,6 +83,8 @@
         case 't':
             return [[Breakable alloc] initWithWhole:[_atlas textureNamed:@"tree"]
                                              broken:[_atlas textureNamed:@"tree-stump"]];
+        case 'f':
+            return [FireBug node];
         default:
             NSLog(@"Unknown tile code: %d", tileCode);
             break;

@@ -83,6 +83,7 @@
 		D9B7B7D619C1D286001D8EB9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B7B7D519C1D286001D8EB9 /* Player.m */; };
 		D9DFE65B19C46EC100C621CF /* AnimatingSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE65A19C46EC100C621CF /* AnimatingSprite.m */; };
 		D9DFE65E19C47F3800C621CF /* Breakable.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE65D19C47F3800C621CF /* Breakable.m */; };
+		D9DFE66119C4849E00C621CF /* FireBug.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE66019C4849E00C621CF /* FireBug.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,8 @@
 		D9DFE65A19C46EC100C621CF /* AnimatingSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatingSprite.m; sourceTree = "<group>"; };
 		D9DFE65C19C47F3800C621CF /* Breakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Breakable.h; sourceTree = "<group>"; };
 		D9DFE65D19C47F3800C621CF /* Breakable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Breakable.m; sourceTree = "<group>"; };
+		D9DFE65F19C4849E00C621CF /* FireBug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBug.h; sourceTree = "<group>"; };
+		D9DFE66019C4849E00C621CF /* FireBug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBug.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +265,8 @@
 				D9DFE65D19C47F3800C621CF /* Breakable.m */,
 				D932425419C3154900CA28AB /* Bug.h */,
 				D932425519C3154900CA28AB /* Bug.m */,
+				D9DFE65F19C4849E00C621CF /* FireBug.h */,
+				D9DFE66019C4849E00C621CF /* FireBug.m */,
 				D93A51BF19C07A0D0027A2FD /* Main.storyboard */,
 				D93A51C219C07A0D0027A2FD /* ViewController.h */,
 				D93A51C319C07A0D0027A2FD /* ViewController.m */,
@@ -585,6 +590,7 @@
 				D93A51F319C07A590027A2FD /* SKEmitterNode+SKTExtras.m in Sources */,
 				D93A524B19C07BE70027A2FD /* SKTTimingFunctions.m in Sources */,
 				D93A51F619C07A590027A2FD /* SKTUtils.mm in Sources */,
+				D9DFE66119C4849E00C621CF /* FireBug.m in Sources */,
 				D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */,
 				D93A51F219C07A590027A2FD /* SKAction+SKTExtras.m in Sources */,
 				D93A51BE19C07A0D0027A2FD /* AppDelegate.m in Sources */,

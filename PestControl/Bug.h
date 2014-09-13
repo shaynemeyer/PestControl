@@ -12,5 +12,6 @@
 @interface Bug : AnimatingSprite
 
 -(void)start;
+-(void)walk;
 
 @end

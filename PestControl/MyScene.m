@@ -12,6 +12,7 @@
 #import "Player.h"
 #import "Bug.h"
 #import "Breakable.h"
+#import "FireBug.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -105,7 +106,7 @@
 
 -(void)createCharacters
 {
-    _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bugs.txt"];
+    _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-bugs.txt"];
     [_worldNode addChild:_bugLayer];
     
     _player = (Player *)[_bugLayer childNodeWithName:@"player"];
@@ -129,6 +130,9 @@
     } else if (other.categoryBitMask & PCBreakableCategory) {
         Breakable *breakable = (Breakable *)other.node;
         [breakable smashBreakable];
+    }  else if (other.categoryBitMask & PCFireBugCategory) {
+        FireBug *fireBug = (FireBug *)other.node;
+        [fireBug kickBug];
     }
 }
 
