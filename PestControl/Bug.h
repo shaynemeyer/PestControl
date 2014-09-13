@@ -7,8 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "AnimatingSprite.h"
 
-@interface Bug : SKSpriteNode
+@interface Bug : AnimatingSprite
 
 -(void)start;
 

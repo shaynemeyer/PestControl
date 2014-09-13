@@ -111,7 +111,7 @@
 }
 
 #pragma mark
-#pragma mark - DidBeginContact Method
+#pragma mark - Contact Methods
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
@@ -120,6 +120,19 @@
     if (other.categoryBitMask == PCPlayerCategory) {
         [other.node removeFromParent];
     }
+}
+
+-(void)didEndContact:(SKPhysicsContact *)contact
+{
+    // find other body involved in the contact.
+    SKPhysicsBody *other = (contact.bodyA.categoryBitMask == PCPlayerCategory ? contact.bodyB : contact.bodyA);
+    
+    // if non-zero value, collision was something solid enough to cause the player to change direction.
+    if (other.categoryBitMask & _player.physicsBody.collisionBitMask) {
+        // change direction.
+        [_player faceCurrentDirection];
+    }
+    
 }
 
 #pragma mark

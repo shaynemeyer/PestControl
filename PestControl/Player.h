@@ -12,5 +12,6 @@
 @interface Player : AnimatingSprite
 
 -(void)moveToward:(CGPoint)targetPosition;
+-(void)faceCurrentDirection;
 
 @end

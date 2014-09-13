@@ -35,6 +35,11 @@
         self.physicsBody.contactTestBitMask = 0xFFFFFFFF;
         
         self.physicsBody.collisionBitMask = PCBoundaryCategory | PCWallCategory | PCWaterCategory;
+        
+        // setup animation
+        self.facingForwardAnim = [Player createAnimWithPrefix:@"player" suffix:@"ft"];
+        self.facingBackAnim = [Player createAnimWithPrefix:@"player" suffix:@"bk"];
+        self.facingSideAnim = [Player createAnimWithPrefix:@"player" suffix:@"lt"];
     }
     
     return self;
@@ -45,6 +50,28 @@
     CGPoint targetVector = CGPointNormalize(CGPointSubtract(targetPosition, self.position));
     targetVector = CGPointMultiplyScalar(targetVector, 300);
     self.physicsBody.velocity = CGVectorMake(targetVector.x, targetVector.y);
+    [self faceCurrentDirection];
+}
+
+-(void)faceCurrentDirection
+{
+    // set direction to current direction
+    PCFacingDirection facingDir = self.facingDirection;
+    
+    // is the player moving vertically more than horizontally? If so choose forward or backward based on which way the player is facing.
+    CGVector dir = self.physicsBody.velocity;
+    if (abs(dir.dy) > abs(dir.dx)) {
+        if (dir.dy < 0) {
+            facingDir = PCFacingForward;
+        } else {
+            facingDir = PCFacingBack;
+        }
+    } else {
+        facingDir = (dir.dx > 0) ? PCFacingRight : PCFacingLeft;
+    }
+    
+    // Set facingDirection Property.
+    self.facingDirection = facingDir;
 }
 
 @end

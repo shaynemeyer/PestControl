@@ -30,6 +30,35 @@
     return self;
 }
 
++(void)initialize
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedFacingForwardAnim = [Bug createAnimWithPrefix:@"bug" suffix:@"ft"];
+        sharedFacingBackAnim = [Bug createAnimWithPrefix:@"bug" suffix:@"bk"];
+        sharedFacingSideAnim = [Bug createAnimWithPrefix:@"bug" suffix:@"lt"];
+    });
+}
+
+static SKAction *sharedFacingBackAnim = nil;
+-(SKAction *)facingBackAnim
+{
+    return sharedFacingBackAnim;
+}
+
+static SKAction *sharedFacingForwardAnim = nil;
+-(SKAction *)facingForwardAnim
+{
+    return sharedFacingForwardAnim;
+}
+
+static SKAction *sharedFacingSideAnim = nil;
+-(SKAction *)facingSideAnim
+{
+    return sharedFacingSideAnim;
+}
+
+
 -(void)walk
 {
     // cast bugs parent to TileMapLayer object.
@@ -53,6 +82,7 @@
             [self walk];
         }]]];
         [self runAction:moveToPos];
+        [self faceDirection:CGPointMake(randomX, randomY)];
     }
     
     // if you hit an invalid tile, wait a short period of time then walk again.
@@ -65,6 +95,39 @@
 -(void)start
 {
     [self walk];
+}
+
+-(void)faceDirection:(CGPoint)dir
+{
+    // store direction sprite currently faces
+    PCFacingDirection facingDir = self.facingDirection;
+    // determines whether the new tile is located diagonally from the current tile.
+    if (dir.y != 0 && dir.x != 0) {
+        // for diagonal motion choose the appropriate facing direction.
+        facingDir = dir.y < 0 ? PCFacingBack : PCFacingForward;
+        self.zRotation = dir.y < 0 ? M_PI_4 : - M_PI_4;
+        if (dir.x > 0) {
+            self.zRotation *= -1;
+        }
+    } else {
+        // if not diagonal, set rotation to zero.
+        self.zRotation = 0;
+        
+        // choose correct direction based on whether the movement is horizontal (y==0) or vertical.
+        if (dir.y == 0) {
+            if (dir.x > 0) {
+                facingDir = PCFacingRight;
+            } else if (dir.x < 0) {
+                facingDir = PCFacingLeft;
+            }
+        } else if (dir.y < 0) {
+            facingDir = PCFacingBack;
+        } else {
+            facingDir = PCFacingForward;
+        }
+    }
+    // set the facingDirection Property.
+    self.facingDirection = facingDir;
 }
 
 @end
