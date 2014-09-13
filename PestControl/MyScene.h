@@ -19,4 +19,7 @@ typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
 
 @interface MyScene : SKScene
 
+-(BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props;
+-(BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props;
+
 @end

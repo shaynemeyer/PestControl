@@ -122,5 +122,18 @@
     }
 }
 
+#pragma mark
+#pragma mark - TileAt Methods
+
+-(BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props
+{
+    SKNode *tile = [_bgLayer tileAtPoint:point];
+    return tile.physicsBody.categoryBitMask & props;
+}
+
+-(BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props
+{
+    return [self tileAtPoint:[_bgLayer pointForCoord:coord] hasAnyProps:props];
+}
 
 @end

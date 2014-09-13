@@ -81,6 +81,7 @@
 		D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */; };
 		D93A526719C07CE80027A2FD /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A526619C07CE80027A2FD /* TileMapLayer.m */; };
 		D9B7B7D619C1D286001D8EB9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B7B7D519C1D286001D8EB9 /* Player.m */; };
+		D9DFE65B19C46EC100C621CF /* AnimateSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE65A19C46EC100C621CF /* AnimateSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,8 @@
 		D93A526619C07CE80027A2FD /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
 		D9B7B7D419C1D286001D8EB9 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		D9B7B7D519C1D286001D8EB9 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		D9DFE65919C46EC100C621CF /* AnimateSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimateSprite.h; sourceTree = "<group>"; };
+		D9DFE65A19C46EC100C621CF /* AnimateSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimateSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +251,8 @@
 			children = (
 				D93A51F719C07AE30027A2FD /* Resources */,
 				D93A51E719C07A590027A2FD /* SKTUtils */,
+				D9DFE65919C46EC100C621CF /* AnimateSprite.h */,
+				D9DFE65A19C46EC100C621CF /* AnimateSprite.m */,
 				D93A51BC19C07A0D0027A2FD /* AppDelegate.h */,
 				D93A51BD19C07A0D0027A2FD /* AppDelegate.m */,
 				D932425419C3154900CA28AB /* Bug.h */,
@@ -565,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9DFE65B19C46EC100C621CF /* AnimateSprite.m in Sources */,
 				D932425619C3154900CA28AB /* Bug.m in Sources */,
 				D93A51C719C07A0D0027A2FD /* MyScene.m in Sources */,
 				D93A524A19C07BE70027A2FD /* SKTEffects.m in Sources */,

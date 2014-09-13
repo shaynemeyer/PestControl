@@ -43,7 +43,8 @@
     
     // make sure the tile you chose is valid. for example if the bug is on the edge of the map then the edge tile is not a valid tile to move to.
     BOOL didMove = NO;
-    if ([tileLayer isValidTileCoord:randomCoord]) {
+    MyScene *scene = (MyScene *)self.scene;
+    if ([tileLayer isValidTileCoord:randomCoord] && ![scene tileAtCoord:randomCoord hasAnyProps:(PCWallCategory|PCWaterCategory)]) {
         // if valid walk the bug.
         didMove = YES;
         CGPoint randomPos = [tileLayer pointForCoord:randomCoord];
