@@ -80,6 +80,7 @@
 		D93A526319C07BFE0027A2FD /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93A525619C07BFE0027A2FD /* Levels.plist */; };
 		D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */; };
 		D93A526719C07CE80027A2FD /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A526619C07CE80027A2FD /* TileMapLayer.m */; };
+		D956F2B219C719750007037B /* tmx-bg-tiles.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = D956F2B119C719750007037B /* tmx-bg-tiles.atlasc */; };
 		D9B7B7D619C1D286001D8EB9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B7B7D519C1D286001D8EB9 /* Player.m */; };
 		D9DFE65B19C46EC100C621CF /* AnimatingSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE65A19C46EC100C621CF /* AnimatingSprite.m */; };
 		D9DFE65E19C47F3800C621CF /* Breakable.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE65D19C47F3800C621CF /* Breakable.m */; };
@@ -186,6 +187,7 @@
 		D93A525819C07BFE0027A2FD /* TileMapLayerLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayerLoader.m; sourceTree = "<group>"; };
 		D93A526519C07CE80027A2FD /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
 		D93A526619C07CE80027A2FD /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
+		D956F2B119C719750007037B /* tmx-bg-tiles.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "tmx-bg-tiles.atlasc"; sourceTree = "<group>"; };
 		D9B7B7D419C1D286001D8EB9 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		D9B7B7D519C1D286001D8EB9 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		D9DFE65919C46EC100C621CF /* AnimatingSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatingSprite.h; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 		D93A524419C07B560027A2FD /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				D956F2B119C719750007037B /* tmx-bg-tiles.atlasc */,
 				D93A524C19C07BFE0027A2FD /* juicy-level-bg.txt */,
 				D93A524D19C07BFE0027A2FD /* juicy-level-breakables.txt */,
 				D93A524E19C07BFE0027A2FD /* juicy-level-bugs.txt */,
@@ -518,6 +521,7 @@
 				D93A526119C07BFE0027A2FD /* level-2-bugs.txt in Resources */,
 				D93A522619C07AFD0027A2FD /* PlayerHitWall.sks in Resources */,
 				D93A526019C07BFE0027A2FD /* level-2-breakables.txt in Resources */,
+				D956F2B219C719750007037B /* tmx-bg-tiles.atlasc in Resources */,
 				D93A525E19C07BFE0027A2FD /* level-1-bugs.txt in Resources */,
 				D93A524319C07AFD0027A2FD /* Win.mp3 in Resources */,
 				D93A523919C07AFD0027A2FD /* KillBug-4.mp3 in Resources */,
