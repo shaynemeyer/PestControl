@@ -47,4 +47,12 @@
    <ellipse/>
   </object>
  </objectgroup>
+ <objectgroup name="CollisionAreas" width="30" height="20">
+  <object name="water" x="448" y="448" width="256" height="128"/>
+  <object name="water" x="512" y="384" width="96" height="64"/>
+  <object name="water" x="608" y="416" width="32" height="32"/>
+  <object name="water" x="416" y="416" width="96" height="32"/>
+  <object name="water" x="416" y="448" width="32" height="64"/>
+  <object name="water" x="544" y="576" width="128" height="32"/>
+ </objectgroup>
 </map>
