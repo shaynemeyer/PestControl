@@ -9,6 +9,8 @@
 #import "TmxTileMapLayer.h"
 #import "MyScene.h"
 #import "Breakable.h"
+#import "Player.h"
+#import "Bug.h"
 
 @implementation TmxTileMapLayer{
     TMXLayer *_layer;
