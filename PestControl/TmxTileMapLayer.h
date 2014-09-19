@@ -12,5 +12,8 @@
 @interface TmxTileMapLayer : TileMapLayer
 
 -(instancetype)initWithTmxLayer:(TMXLayer *)layer;
+-(instancetype)initWithTmxObjectGroup:(TMXObjectGroup *)group
+                             tileSize:(CGSize)tileSize
+                             gridSize:(CGSize)gridSize;
 
 @end

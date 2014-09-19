@@ -113,7 +113,8 @@
 
 -(void)createCharacters
 {
-    _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-bugs.txt"];
+    //_bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-bugs.txt"];
+    _bugLayer = [[TmxTileMapLayer alloc] initWithTmxObjectGroup:[_tileMap groupNamed:@"Bugs"] tileSize:_tileMap.tileSize gridSize:_bgLayer.gridSize];
     [_worldNode addChild:_bugLayer];
     
     _player = (Player *)[_bugLayer childNodeWithName:@"player"];

@@ -32,6 +32,21 @@
     return self;
 }
 
+-(instancetype)initWithTmxObjectGroup:(TMXObjectGroup *)group
+                             tileSize:(CGSize)tileSize
+                             gridSize:(CGSize)gridSize
+{
+    if (self = [super init]) {
+        _tmxTileSize = tileSize;
+        _tmxGridSize = gridSize;
+        _tmxLayerSize = CGSizeMake(tileSize.width * gridSize.width,
+                                   tileSize.height * gridSize.height);
+        [self createNodesFromGroup:group];
+    }
+    
+    return self;
+}
+
 #pragma mark
 #pragma mark - Getters
 
@@ -83,6 +98,23 @@
                 [layer removeTileAtCoord:coord];
             }
         }
+    }
+}
+
+-(void)createNodesFromGroup:(TMXObjectGroup *)group
+{
+    NSDictionary *playerObj = [group objectNamed:@"player"];
+    if (playerObj) {
+        Player *player = [Player node];
+        player.position = CGPointMake([playerObj[@"x"] floatValue], [playerObj[@"y"] floatValue]);
+        [self addChild:player];
+    }
+    
+    NSArray *bugs = [group objectsNamed:@"bug"];
+    for (NSDictionary *bugPos in bugs) {
+        Bug *bug = [Bug node];
+        bug.position = CGPointMake([bugPos[@"x"] floatValue], [bugPos[@"y"] floatValue]);
+        [self addChild:bug];
     }
 }
 
