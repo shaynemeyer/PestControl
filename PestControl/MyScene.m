@@ -13,6 +13,7 @@
 #import "Bug.h"
 #import "Breakable.h"
 #import "FireBug.h"
+#import "TmxTileMapLayer.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -25,6 +26,7 @@
     Player *_player;
     TileMapLayer *_bugLayer;
     TileMapLayer *_breakableLayer;
+    JSTileMap *_tileMap;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -75,13 +77,18 @@
 
 -(TileMapLayer *)createScenery
 {
-    return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bg.txt"];
+    //return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bg.txt"];
+    _tileMap = [JSTileMap mapNamed:@"level-3.tmx"];
+    return [[TmxTileMapLayer alloc] initWithTmxLayer:[_tileMap layerNamed:@"Background"]];
 }
 
 -(void)createWorld
 {
     _bgLayer = [self createScenery];
     _worldNode = [SKNode node];
+    if (_tileMap) {
+        [_worldNode addChild:_tileMap];
+    }
     [_worldNode addChild:_bgLayer];
     [self addChild:_worldNode];
     
