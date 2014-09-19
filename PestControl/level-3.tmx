@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="bg-tiles" tilewidth="32" tileheight="32" spacing="6" margin="4">
+  <image source="tmx-bg-tiles.atlasc/tmx-bg-tiles.1.png" width="128" height="256"/>
+  <tile id="5">
+   <properties>
+    <property name="tree" value="1"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJydVdsOxSAIU990//+/Z0tmQnpKi3sg6uRWpKy31sYt/V3nB9n2KCNIJzYj0UU71GGxurjbdtPEYevpHWLq7R+vw6501B59TVNbVeeTN8GzwlvNxb1PpX8qvaXisL27czon+bseU1xQNvGsOM3843c1DyoYkJ8VbjOfMb7iDKutmwuqrj3x4bi0bbI6ZT3EZktW92d/3bLeFeuc9bvKB3OJ5xVi4Z7NQYb1Sy9fEJOJ47vKIdOLGDOpcLT6f415Yxysd7V3T2cM4l0QO5sV7s2zHBR29raKd4qPLB/V65W58qw/UTcGyw==
+  </data>
+ </layer>
+ <layer name="Breakables" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg8gG0Q2YVNnhbuw2UmMXbRM7zIAeSEMTH6qOkGSvQPpvAnJSxJcfdg8iOpgJZxT01AK3vQzSXHnqEeBgNlz0ADYv1Jj3qG1uU5JeZTOz2gmwcAoc0Axw==
+  </data>
+ </layer>
+</map>

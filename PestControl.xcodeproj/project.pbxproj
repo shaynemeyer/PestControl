@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D92877A819CC5CAF0066E3B5 /* level-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = D92877A719CC5CAF0066E3B5 /* level-3.tmx */; };
+		D92877AC19CC63380066E3B5 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D92877AB19CC63380066E3B5 /* LFCGzipUtility.m */; };
+		D92877AF19CC634A0066E3B5 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D92877AE19CC634A0066E3B5 /* JSTileMap.m */; };
 		D932425619C3154900CA28AB /* Bug.m in Sources */ = {isa = PBXBuildFile; fileRef = D932425519C3154900CA28AB /* Bug.m */; };
 		D93A51AC19C07A0D0027A2FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AB19C07A0D0027A2FD /* Foundation.framework */; };
 		D93A51AE19C07A0D0027A2FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AD19C07A0D0027A2FD /* CoreGraphics.framework */; };
@@ -98,6 +101,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D92877A719CC5CAF0066E3B5 /* level-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level-3.tmx"; sourceTree = "<group>"; };
+		D92877AA19CC63380066E3B5 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		D92877AB19CC63380066E3B5 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
+		D92877AD19CC634A0066E3B5 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		D92877AE19CC634A0066E3B5 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
 		D932425419C3154900CA28AB /* Bug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bug.h; sourceTree = "<group>"; };
 		D932425519C3154900CA28AB /* Bug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bug.m; sourceTree = "<group>"; };
 		D93A51A819C07A0D0027A2FD /* PestControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PestControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +231,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D92877A919CC63190066E3B5 /* JSTileMap */ = {
+			isa = PBXGroup;
+			children = (
+				D92877AD19CC634A0066E3B5 /* JSTileMap.h */,
+				D92877AE19CC634A0066E3B5 /* JSTileMap.m */,
+				D92877AA19CC63380066E3B5 /* LFCGzipUtility.h */,
+				D92877AB19CC63380066E3B5 /* LFCGzipUtility.m */,
+			);
+			name = JSTileMap;
+			sourceTree = "<group>";
+		};
 		D93A519F19C07A0D0027A2FD = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +352,7 @@
 		D93A51F719C07AE30027A2FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D92877A919CC63190066E3B5 /* JSTileMap */,
 				D93A524519C07BE70027A2FD /* Extra Source Code */,
 				D93A51F819C07AFD0027A2FD /* Art */,
 				D93A524419C07B560027A2FD /* Levels */,
@@ -410,6 +430,7 @@
 		D93A524419C07B560027A2FD /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				D92877A719CC5CAF0066E3B5 /* level-3.tmx */,
 				D956F2B119C719750007037B /* tmx-bg-tiles.atlasc */,
 				D93A524C19C07BFE0027A2FD /* juicy-level-bg.txt */,
 				D93A524D19C07BFE0027A2FD /* juicy-level-breakables.txt */,
@@ -565,6 +586,7 @@
 				D93A526319C07BFE0027A2FD /* Levels.plist in Resources */,
 				D93A525F19C07BFE0027A2FD /* level-2-bg.txt in Resources */,
 				D93A522E19C07AFD0027A2FD /* DrownFireBug.mp3 in Resources */,
+				D92877A819CC5CAF0066E3B5 /* level-3.tmx in Resources */,
 				D93A523C19C07AFD0027A2FD /* KillBug-7.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,11 +617,13 @@
 				D93A524B19C07BE70027A2FD /* SKTTimingFunctions.m in Sources */,
 				D93A51F619C07A590027A2FD /* SKTUtils.mm in Sources */,
 				D9DFE66119C4849E00C621CF /* FireBug.m in Sources */,
+				D92877AF19CC634A0066E3B5 /* JSTileMap.m in Sources */,
 				D93A526419C07BFE0027A2FD /* TileMapLayerLoader.m in Sources */,
 				D93A51F219C07A590027A2FD /* SKAction+SKTExtras.m in Sources */,
 				D93A51BE19C07A0D0027A2FD /* AppDelegate.m in Sources */,
 				D93A51F419C07A590027A2FD /* SKNode+SKTExtras.m in Sources */,
 				D9B7B7D619C1D286001D8EB9 /* Player.m in Sources */,
+				D92877AC19CC63380066E3B5 /* LFCGzipUtility.m in Sources */,
 				D9DFE65E19C47F3800C621CF /* Breakable.m in Sources */,
 				D93A51BA19C07A0D0027A2FD /* main.m in Sources */,
 			);
