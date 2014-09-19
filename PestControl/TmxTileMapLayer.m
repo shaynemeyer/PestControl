@@ -11,6 +11,7 @@
 #import "Breakable.h"
 #import "Player.h"
 #import "Bug.h"
+#import "FireBug.h"
 
 @implementation TmxTileMapLayer{
     TMXLayer *_layer;
@@ -115,6 +116,14 @@
         Bug *bug = [Bug node];
         bug.position = CGPointMake([bugPos[@"x"] floatValue], [bugPos[@"y"] floatValue]);
         [self addChild:bug];
+    }
+
+    NSArray *fireBugs = [group objectsNamed:@"firebug"];
+    for (NSDictionary *bugPos in fireBugs) {
+        FireBug *fireBug = [FireBug node];
+        fireBug.position = CGPointMake([bugPos[@"x"] floatValue],
+                                       [bugPos[@"y"] floatValue]);
+        [self addChild:fireBug];
     }
 }
 

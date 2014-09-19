@@ -109,6 +109,10 @@
     if (_breakableLayer) {
         [_worldNode addChild:_breakableLayer];
     }
+    
+    if (_tileMap) {
+        [self createCollisionAreas];
+    }
 }
 
 -(void)createCharacters
@@ -124,6 +128,32 @@
     [_bugLayer enumerateChildNodesWithName:@"bug" usingBlock:^(SKNode *node, BOOL *stop) {
         [(Bug *)node start];
     }];
+}
+
+-(void)createCollisionAreas
+{
+    TMXObjectGroup *group = [_tileMap groupNamed:@"CollisionAreas"];
+    
+    NSArray *waterObjects = [group objectsNamed:@"water"];
+    for (NSDictionary *waterObj in waterObjects) {
+        CGFloat x = [waterObj[@"x"] floatValue];
+        CGFloat y = [waterObj[@"y"] floatValue];
+        CGFloat w = [waterObj[@"width"] floatValue];
+        CGFloat h = [waterObj[@"height"] floatValue];
+        
+        SKSpriteNode *water = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(w, h)];
+        water.name = @"water";
+        water.position = CGPointMake(x + w / 2, y + h / 2);
+        
+        water.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(w, h)];
+        
+        water.physicsBody.categoryBitMask = PCWaterCategory;
+        water.physicsBody.dynamic = NO;
+        water.physicsBody.friction = 0;
+        water.hidden = YES;
+        
+        [_bgLayer addChild:water];
+    }
 }
 
 #pragma mark

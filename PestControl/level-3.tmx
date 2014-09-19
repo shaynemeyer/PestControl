@@ -46,6 +46,8 @@
   <object name="player" x="480" y="320">
    <ellipse/>
   </object>
+  <object name="firebug" x="160" y="352"/>
+  <object name="firebug" x="768" y="416"/>
  </objectgroup>
  <objectgroup name="CollisionAreas" width="30" height="20">
   <object name="water" x="448" y="448" width="256" height="128"/>
