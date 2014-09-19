@@ -8,6 +8,7 @@
 
 #import "TmxTileMapLayer.h"
 #import "MyScene.h"
+#import "Breakable.h"
 
 @implementation TmxTileMapLayer{
     TMXLayer *_layer;
@@ -52,6 +53,8 @@
 
 -(void)createNodesFromLayer:(TMXLayer *)layer
 {
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"tmx-bg-tiles"];
+    
     JSTileMap *map = layer.map;
     // loop through all locations in the layer
     for (int w = 0; w < self.gridSize.width; ++w) {
@@ -71,6 +74,11 @@
                 tile.physicsBody.categoryBitMask = PCWallCategory;
                 tile.physicsBody.dynamic = NO;
                 tile.physicsBody.friction = 0;
+            } else if ([map propertiesForGid:tileGid][@"tree"]) {
+                SKNode *tile = [[Breakable alloc] initWithWhole:[atlas textureNamed:@"tree"] broken:[atlas textureNamed:@"tree-stump"]];
+                tile.position = [self pointForCoord:coord];
+                [self addChild:tile];
+                [layer removeTileAtCoord:coord];
             }
         }
     }
