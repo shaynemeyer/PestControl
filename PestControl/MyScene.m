@@ -158,7 +158,12 @@
 
 - (TileMapLayer *)createBreakables
 {
-    return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-breakables.txt"];
+    if (_tileMap) {
+        TMXLayer *breakables = [_tileMap layerNamed:@"Breakables"];
+        return (breakables ? [[TmxTileMapLayer alloc] initWithTmxLayer:breakables] : nil);
+    } else {
+        return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-breakables.txt"];
+    }
 }
 
 #pragma mark
