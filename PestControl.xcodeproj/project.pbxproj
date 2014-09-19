@@ -10,6 +10,7 @@
 		D92877A819CC5CAF0066E3B5 /* level-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = D92877A719CC5CAF0066E3B5 /* level-3.tmx */; };
 		D92877AC19CC63380066E3B5 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D92877AB19CC63380066E3B5 /* LFCGzipUtility.m */; };
 		D92877AF19CC634A0066E3B5 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D92877AE19CC634A0066E3B5 /* JSTileMap.m */; };
+		D92877B119CC63C30066E3B5 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D92877B019CC63C30066E3B5 /* LICENSE.txt */; };
 		D932425619C3154900CA28AB /* Bug.m in Sources */ = {isa = PBXBuildFile; fileRef = D932425519C3154900CA28AB /* Bug.m */; };
 		D93A51AC19C07A0D0027A2FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AB19C07A0D0027A2FD /* Foundation.framework */; };
 		D93A51AE19C07A0D0027A2FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93A51AD19C07A0D0027A2FD /* CoreGraphics.framework */; };
@@ -106,6 +107,7 @@
 		D92877AB19CC63380066E3B5 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		D92877AD19CC634A0066E3B5 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		D92877AE19CC634A0066E3B5 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
+		D92877B019CC63C30066E3B5 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D932425419C3154900CA28AB /* Bug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bug.h; sourceTree = "<group>"; };
 		D932425519C3154900CA28AB /* Bug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bug.m; sourceTree = "<group>"; };
 		D93A51A819C07A0D0027A2FD /* PestControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PestControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 				D92877AE19CC634A0066E3B5 /* JSTileMap.m */,
 				D92877AA19CC63380066E3B5 /* LFCGzipUtility.h */,
 				D92877AB19CC63380066E3B5 /* LFCGzipUtility.m */,
+				D92877B019CC63C30066E3B5 /* LICENSE.txt */,
 			);
 			name = JSTileMap;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				D93A523419C07AFD0027A2FD /* KillBug-10.mp3 in Resources */,
 				D93A522D19C07AFD0027A2FD /* WaterDrop.png in Resources */,
 				D93A522319C07AFD0027A2FD /* FirebugSmoke.sks in Resources */,
+				D92877B119CC63C30066E3B5 /* LICENSE.txt in Resources */,
 				D93A51CB19C07A0E0027A2FD /* Images.xcassets in Resources */,
 				D93A525D19C07BFE0027A2FD /* level-1-bg.txt in Resources */,
 				D93A522219C07AFD0027A2FD /* BugSplatter.sks in Resources */,
