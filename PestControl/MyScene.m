@@ -19,6 +19,7 @@ typedef NS_ENUM(int32_t, PCGameState)
 {
     PCGameStateStartingLevel,
     PCGameStatePlaying,
+    PCGameStateInLevelMenu,
 };
 
 @interface MyScene () <SKPhysicsContactDelegate>
@@ -68,9 +69,32 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    if (![_bugLayer childNodeWithName:@"bug"]) {
-        NSLog(@"Who's the big winner? You are!");
+    if (_gameState != PCGameStatePlaying) {
+        return;
     }
+    
+    if (![_bugLayer childNodeWithName:@"bug"]) {
+        [self endLevelWithSuccess:YES];
+    }
+}
+
+-(void)endLevelWithSuccess:(BOOL)won
+{
+    // display proper message. Win or lose.
+    SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"msgLabel"];
+    label.text = (won ? @"You Win!!!" : @"Too Slow!!!");
+    label.hidden = NO;
+    // Give the user the option to move on to the next level.
+    SKLabelNode *nextLevel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    nextLevel.text = @"Next Level?";
+    nextLevel.name = @"nextLevelLabel";
+    nextLevel.fontSize = 28;
+    nextLevel.horizontalAlignmentMode = (won ? SKLabelHorizontalAlignmentModeCenter : SKLabelHorizontalAlignmentModeLeft);
+    nextLevel.position = (won ? CGPointMake(0, -40) : CGPointMake(0+20, -40));
+    [self addChild:nextLevel];
+    // stop player movement.
+    _player.physicsBody.linearDamping = 1;
+    _gameState = PCGameStateInLevelMenu;
 }
 
 -(void)centerViewOn:(CGPoint)centerOn
