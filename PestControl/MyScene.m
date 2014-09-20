@@ -35,10 +35,22 @@ typedef NS_ENUM(int32_t, PCGameState)
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
     PCGameState _gameState;
+    int _level;
 }
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size level:(int)level{
     if (self = [super initWithSize:size]) {
+        NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"]];
+        if (level < 0 || level >= [config[@"levels"] count]) {
+            level = 0;
+        }
+        _level = level;
+        
+        NSDictionary *levelData = config[@"levels"][level];
+        if (levelData[@"tmxFile"]) {
+            _tileMap = [JSTileMap mapNamed:levelData[@"tmxFile"]];
+        }
+        
         [self createWorld];
         [self createCharacters];
         [self centerViewOn:_player.position];
