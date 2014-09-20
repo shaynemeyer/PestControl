@@ -15,6 +15,12 @@
 #import "FireBug.h"
 #import "TmxTileMapLayer.h"
 
+typedef NS_ENUM(int32_t, PCGameState)
+{
+    PCGameStateStartingLevel,
+    PCGameStatePlaying,
+};
+
 @interface MyScene () <SKPhysicsContactDelegate>
 
 @end
@@ -27,6 +33,7 @@
     TileMapLayer *_bugLayer;
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
+    PCGameState _gameState;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -34,19 +41,36 @@
         [self createWorld];
         [self createCharacters];
         [self centerViewOn:_player.position];
+        [self createUserInterface];
+        _gameState = PCGameStateStartingLevel;
     }
     return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    UITouch *touch = [touches anyObject];
-    [_player moveToward:[touch locationInNode:_worldNode]];
-
+    
+    switch (_gameState) {
+        case PCGameStateStartingLevel:
+        {
+            [self childNodeWithName:@"msgLabel"].hidden = YES;
+            _gameState = PCGameStatePlaying;
+            self.paused = NO;
+            // Intentionally omitted break.
+        }
+        case PCGameStatePlaying:
+        {
+            UITouch *touch = [touches anyObject];
+            [_player moveToward:[touch locationInNode:_worldNode]];
+            break;
+        }
+    }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    if (![_bugLayer childNodeWithName:@"bug"]) {
+        NSLog(@"Who's the big winner? You are!");
+    }
 }
 
 -(void)centerViewOn:(CGPoint)centerOn
@@ -70,6 +94,13 @@
     newPosition.y += (target.y - _worldNode.position.y) * 0.1f;
     
     _worldNode.position = newPosition;
+}
+
+-(void)didMoveToView:(SKView *)view
+{
+    if (_gameState == PCGameStateStartingLevel) {
+        self.paused = YES;
+    }
 }
 
 #pragma mark
@@ -154,6 +185,16 @@
         
         [_bgLayer addChild:water];
     }
+}
+
+-(void)createUserInterface
+{
+    SKLabelNode *startMsg = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    startMsg.name = @"msgLabel";
+    startMsg.text = @"Tap Screen to run!";
+    startMsg.fontSize = 32;
+    startMsg.position = CGPointMake(0, 20);
+    [self addChild:startMsg];
 }
 
 #pragma mark
