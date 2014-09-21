@@ -51,8 +51,8 @@ typedef NS_ENUM(int32_t, PCGameState)
             _tileMap = [JSTileMap mapNamed:levelData[@"tmxFile"]];
         }
         
-        [self createWorld];
-        [self createCharacters];
+        [self createWorld:levelData];
+        [self createCharacters:levelData];
         [self centerViewOn:_player.position];
         [self createUserInterface];
         _gameState = PCGameStateStartingLevel;
@@ -74,6 +74,19 @@ typedef NS_ENUM(int32_t, PCGameState)
         {
             UITouch *touch = [touches anyObject];
             [_player moveToward:[touch locationInNode:_worldNode]];
+            break;
+        }
+        case PCGameStateInLevelMenu:
+        {
+            UITouch *touch = [touches anyObject];
+            CGPoint loc = [touch locationInNode:self];
+            
+            SKNode *node = [self childNodeWithName:@"nextLevelLabel"];
+            if ([node containsPoint:loc]) {
+                MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level+1];
+                
+                [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:0.5]];
+            }
             break;
         }
     }
@@ -142,16 +155,23 @@ typedef NS_ENUM(int32_t, PCGameState)
 #pragma mark
 #pragma mark - Create Scene Methods
 
--(TileMapLayer *)createScenery
+-(TileMapLayer *)createScenery:(NSDictionary*)levelData
 {
     //return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-1-bg.txt"];
     _tileMap = [JSTileMap mapNamed:@"level-3.tmx"];
-    return [[TmxTileMapLayer alloc] initWithTmxLayer:[_tileMap layerNamed:@"Background"]];
+
+    if (_tileMap) {
+        return [[TmxTileMapLayer alloc] initWithTmxLayer:[_tileMap layerNamed:@"Background"]];
+    } else {
+        NSDictionary *layerFiles = levelData[@"layers"];
+        return [TileMapLayerLoader tileMapLayerFromFileNamed:layerFiles[@"background"]];
+    }
+    
 }
 
--(void)createWorld
+-(void)createWorld:(NSDictionary *)levelData
 {
-    _bgLayer = [self createScenery];
+    _bgLayer = [self createScenery:levelData];
     _worldNode = [SKNode node];
     if (_tileMap) {
         [_worldNode addChild:_tileMap];
@@ -172,7 +192,7 @@ typedef NS_ENUM(int32_t, PCGameState)
     
     self.physicsWorld.contactDelegate = self;
     
-    _breakableLayer = [self createBreakables];
+    _breakableLayer = [self createBreakables:levelData];
     if (_breakableLayer) {
         [_worldNode addChild:_breakableLayer];
     }
@@ -182,10 +202,16 @@ typedef NS_ENUM(int32_t, PCGameState)
     }
 }
 
--(void)createCharacters
+-(void)createCharacters:(NSDictionary *)levelData
 {
-    //_bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-bugs.txt"];
-    _bugLayer = [[TmxTileMapLayer alloc] initWithTmxObjectGroup:[_tileMap groupNamed:@"Bugs"] tileSize:_tileMap.tileSize gridSize:_bgLayer.gridSize];
+    if (_tileMap) {
+        _bugLayer = [[TmxTileMapLayer alloc] initWithTmxObjectGroup:[_tileMap groupNamed:@"Bugs"]
+                                                           tileSize:_tileMap.tileSize
+                                                           gridSize:_bgLayer.gridSize];
+    } else {
+        NSDictionary *layerFiles = levelData[@"layers"];
+        _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:layerFiles[@"bugs"]];
+    }
     [_worldNode addChild:_bugLayer];
     
     _player = (Player *)[_bugLayer childNodeWithName:@"player"];
@@ -264,13 +290,14 @@ typedef NS_ENUM(int32_t, PCGameState)
     
 }
 
-- (TileMapLayer *)createBreakables
+- (TileMapLayer *)createBreakables:(NSDictionary *)levelData
 {
     if (_tileMap) {
         TMXLayer *breakables = [_tileMap layerNamed:@"Breakables"];
         return (breakables ? [[TmxTileMapLayer alloc] initWithTmxLayer:breakables] : nil);
     } else {
-        return [TileMapLayerLoader tileMapLayerFromFileNamed:@"level-2-breakables.txt"];
+        NSDictionary *layerFiles = levelData[@"layers"];
+        return [TileMapLayerLoader tileMapLayerFromFileNamed:layerFiles[@"breakables"]];
     }
 }
 
