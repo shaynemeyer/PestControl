@@ -33,4 +33,21 @@
     self.size = _broken.size;
 }
 
+#pragma mark
+#pragma mark - NSCoding methods
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:_broken forKey:@"Breakable-broken"];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        _broken = [aDecoder decodeObjectForKey:@"Breakable-broken"];
+    }
+    return self;
+}
+
 @end
