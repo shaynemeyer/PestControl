@@ -361,4 +361,86 @@ typedef NS_ENUM(int32_t, PCGameState)
     return [self tileAtPoint:[_bgLayer pointForCoord:coord] hasAnyProps:props];
 }
 
+#pragma mark
+#pragma mark - NSCoding methods
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+//    SKNode *worldBounds =
+//    [_worldNode childNodeWithName:@"worldBounds"];
+//    [worldBounds removeFromParent];
+    
+    //1
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeObject:_worldNode forKey:@"MyScene-WorldNode"];
+    [aCoder encodeObject:_player forKey:@"MyScene-Player"];
+    [aCoder encodeObject:_bgLayer forKey:@"MyScene-BgLayer"];
+    [aCoder encodeObject:_bugLayer forKey:@"MyScene-BugLayer"];
+    [aCoder encodeObject:_breakableLayer forKey:@"MyScene-BreakableLayer"];
+    [aCoder encodeObject:_tileMap forKey:@"MyScene-TmxTileMap"];
+    
+    [aCoder encodeInt32:_gameState forKey:@"MyScene-GameState"];
+    [aCoder encodeInt:_level forKey:@"MyScene-Level"];
+    [aCoder encodeDouble:_levelTimeLimit forKey:@"MyScene-LevelTimeLimit"];
+    [aCoder encodeObject:_timerLabel forKey:@"MyScene-TimerLabel"];
+    //2
+    [aCoder encodeDouble:_elapsedTime forKey:@"MyScene-ElapsedTime"];
+    
+//    [_worldNode addChild:worldBounds];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        _worldNode =
+        [aDecoder decodeObjectForKey:@"MyScene-WorldNode"];
+        _player = [aDecoder decodeObjectForKey:@"MyScene-Player"];
+        _bgLayer = [aDecoder decodeObjectForKey:@"MyScene-BgLayer"];
+        _bugLayer = [aDecoder decodeObjectForKey:@"MyScene-BugLayer"];
+        _breakableLayer = [aDecoder decodeObjectForKey:@"MyScene-BreakableLayer"];
+        _tileMap = [aDecoder decodeObjectForKey:@"MyScene-TmxTileMap"];
+        
+        _gameState = [aDecoder decodeInt32ForKey:@"MyScene-GameState"];
+        _level = [aDecoder decodeIntForKey:@"MyScene-Level"];
+        _levelTimeLimit = [aDecoder decodeDoubleForKey:@"MyScene-LevelTimeLimit"];
+        _timerLabel = [aDecoder decodeObjectForKey:@"MyScene-TimerLabel"];
+        
+        _elapsedTime = [aDecoder decodeDoubleForKey:@"MyScene-ElapsedTime"];
+        
+//        SKNode *bounds = [SKNode node];
+//        bounds.name = @"worldBounds";
+//        bounds.physicsBody =
+//        [SKPhysicsBody bodyWithEdgeLoopFromRect:
+//         CGRectMake(0, 0,
+//                    _bgLayer.layerSize.width,
+//                    _bgLayer.layerSize.height)];
+//        bounds.physicsBody.categoryBitMask = PCWallCategory;
+//        bounds.physicsBody.collisionBitMask = 0;
+//        bounds.physicsBody.friction = 0;
+//        [_worldNode addChild:bounds];
+//        
+//        if (_tileMap) {
+//            [_bgLayer enumerateChildNodesWithName:@"water"
+//                                       usingBlock:
+//             ^(SKNode *node, BOOL *stop){
+//                 node.hidden = YES;
+//             }];
+//        }
+//        
+//        switch (_gameState) {
+//            case PCGameStateInReloadMenu:
+//            case PCGameStatePlaying:
+//            {
+//                _gameState = PCGameStateInReloadMenu;
+//                [self showReloadMenu];
+//                break;
+//            }
+//            default: break;
+//        }
+        
+    }
+    return self;
+}
+
 @end
