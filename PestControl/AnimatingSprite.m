@@ -51,4 +51,31 @@
     }
 }
 
+#pragma mark
+#pragma mark - NSCoding methods
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    // ensure super classes encode their data.
+    [super encodeWithCoder:aCoder];
+    //
+    [aCoder encodeObject:_facingForwardAnim forKey:@"AS-ForwardAnim"];
+    [aCoder encodeObject:_facingBackAnim forKey:@"AS-BackAnim"];
+    [aCoder encodeObject:_facingSideAnim forKey:@"AS-SideAnim"];
+    [aCoder encodeInt32:_facingDirection forKey:@"AS-FacingDirection"];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    // 1
+    if (self = [super initWithCoder:aDecoder]) {
+        // 2
+        _facingForwardAnim = [aDecoder decodeObjectForKey:@"AS-ForwardAnim"];
+        _facingBackAnim = [aDecoder decodeObjectForKey:@"AS-BackAnim"];
+        _facingSideAnim = [aDecoder decodeObjectForKey:@"AS-SideAnim"];
+        _facingDirection = [aDecoder decodeInt32ForKey:@"AS-FacingDirection"];
+    }
+    return self;
+}
+
 @end
