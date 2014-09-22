@@ -94,6 +94,12 @@ typedef NS_ENUM(int32_t, PCGameState)
                 MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level+1];
                 
                 [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:0.5]];
+            } else {
+                node = [self childNodeWithName:@"retryLabel"];
+                if ([node containsPoint:loc]) {
+                    MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level];
+                    [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:0.5]];
+                }
             }
             break;
         }
@@ -146,6 +152,16 @@ typedef NS_ENUM(int32_t, PCGameState)
     // stop player movement.
     _player.physicsBody.linearDamping = 1;
     _gameState = PCGameStateInLevelMenu;
+    
+    if (!won) {
+        SKLabelNode *tryAgain = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        tryAgain.text = @"Try Again?";
+        tryAgain.name = @"retryLabel";
+        tryAgain.fontSize = 28;
+        tryAgain.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+        tryAgain.position = CGPointMake(0-20, -40);
+        [self addChild:tryAgain];
+    }
 }
 
 -(void)centerViewOn:(CGPoint)centerOn
