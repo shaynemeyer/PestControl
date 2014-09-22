@@ -94,6 +94,10 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    if (_gameState == PCGameStateInLevelMenu && !self.isPaused) {
+        self.paused = YES;
+    }
+    
     if (_gameState != PCGameStatePlaying) {
         return;
     }
@@ -143,13 +147,6 @@ typedef NS_ENUM(int32_t, PCGameState)
     newPosition.y += (target.y - _worldNode.position.y) * 0.1f;
     
     _worldNode.position = newPosition;
-}
-
--(void)didMoveToView:(SKView *)view
-{
-    if (_gameState == PCGameStateStartingLevel) {
-        self.paused = YES;
-    }
 }
 
 #pragma mark
