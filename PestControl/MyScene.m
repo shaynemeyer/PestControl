@@ -36,6 +36,11 @@ typedef NS_ENUM(int32_t, PCGameState)
     JSTileMap *_tileMap;
     PCGameState _gameState;
     int _level;
+    double _levelTimeLimit;
+    SKLabelNode *_timerLabel;
+    double _currentTime;
+    double _startTime;
+    double _elapsedTime;
 }
 
 -(id)initWithSize:(CGSize)size level:(int)level{
@@ -54,6 +59,7 @@ typedef NS_ENUM(int32_t, PCGameState)
         [self createWorld:levelData];
         [self createCharacters:levelData];
         [self centerViewOn:_player.position];
+        _levelTimeLimit = [levelData[@"timeLimit"] doubleValue];
         [self createUserInterface];
         _gameState = PCGameStateStartingLevel;
     }
@@ -68,6 +74,8 @@ typedef NS_ENUM(int32_t, PCGameState)
             [self childNodeWithName:@"msgLabel"].hidden = YES;
             _gameState = PCGameStatePlaying;
             self.paused = NO;
+            _timerLabel.hidden = NO;
+            _startTime = _currentTime;
             // Intentionally omitted break.
         }
         case PCGameStatePlaying:
@@ -94,6 +102,9 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    _currentTime = currentTime;
+    
     if (_gameState == PCGameStateInLevelMenu && !self.isPaused) {
         self.paused = YES;
     }
@@ -102,7 +113,18 @@ typedef NS_ENUM(int32_t, PCGameState)
         return;
     }
     
-    if (![_bugLayer childNodeWithName:@"bug"]) {
+    _elapsedTime = currentTime - _startTime;
+    
+    CFTimeInterval timeRemaining = _levelTimeLimit - _elapsedTime;
+    if (timeRemaining < 0) {
+        timeRemaining = 0;
+    }
+    
+    _timerLabel.text = [NSString stringWithFormat:@"Time Remaining: %2.2f", timeRemaining];
+    
+    if (_elapsedTime >= _levelTimeLimit) {
+        [self endLevelWithSuccess:NO];
+    } else if (![_bugLayer childNodeWithName:@"bug"]) {
         [self endLevelWithSuccess:YES];
     }
 }
@@ -254,6 +276,14 @@ typedef NS_ENUM(int32_t, PCGameState)
     startMsg.fontSize = 32;
     startMsg.position = CGPointMake(0, 20);
     [self addChild:startMsg];
+    
+    _timerLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    _timerLabel.text = [NSString stringWithFormat:@"Time Remaining: %2.2f", _levelTimeLimit];
+    _timerLabel.fontSize = 18;
+    _timerLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    _timerLabel.position = CGPointMake(0, 130);
+    [self addChild:_timerLabel];
+    _timerLabel.hidden = YES;
 }
 
 #pragma mark
