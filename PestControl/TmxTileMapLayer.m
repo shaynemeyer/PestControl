@@ -133,4 +133,29 @@
     return tile ? tile : [_layer tileAt:point];
 }
 
+#pragma mark
+#pragma mark - NSCoding methods
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:_layer forKey:@"TmxTML-Layer"];
+    [aCoder encodeCGSize:_tmxTileSize forKey:@"TmxTML-TileSize"];
+    [aCoder encodeCGSize:_tmxGridSize forKey:@"TmxTML-GridSize"];
+    [aCoder encodeCGSize:_tmxLayerSize forKey:@"TmxTML-LayerSize"];
+    
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        _layer = [aDecoder decodeObjectForKey:@"TmxTML-Layer"];
+        _tmxTileSize = [aDecoder decodeCGSizeForKey:@"TmxTML-TileSize"];
+        _tmxGridSize = [aDecoder decodeCGSizeForKey:@"TmxTML-GridSize"];
+        _tmxLayerSize = [aDecoder decodeCGSizeForKey:@"TmxTML-LayerSize"];
+    }
+    
+    return self;
+}
+
 @end
