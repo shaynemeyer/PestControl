@@ -142,4 +142,29 @@
     return n.parent == self ? n : nil;
 }
 
+
+#pragma mark
+#pragma mark - NSCoding methods
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeObject:_atlas forKey:@"TML-Atlas"];
+    [aCoder encodeCGSize:_gridSize forKey:@"TML-GridSize"];
+    [aCoder encodeCGSize:_tileSize forKey:@"TML-TileSize"];
+    [aCoder encodeCGSize:_layerSize forKey:@"TML-LayerSize"];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        _atlas = [aDecoder decodeObjectForKey:@"TML-Atlas"];
+        _gridSize = [aDecoder decodeCGSizeForKey:@"TML-GridSize"];
+        _tileSize = [aDecoder decodeCGSizeForKey:@"TML-TileSize"];
+        _layerSize = [aDecoder decodeCGSizeForKey:@"TML-LayerSize"];
+    }
+    return self;
+}
+
 @end
