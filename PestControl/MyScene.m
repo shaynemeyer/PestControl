@@ -46,7 +46,7 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 -(id)initWithSize:(CGSize)size level:(int)level{
     if (self = [super initWithSize:size]) {
-        NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"]];
+        NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JuicyLevels" ofType:@"plist"]];
         if (level < 0 || level >= [config[@"levels"] count]) {
             level = 0;
         }
