@@ -10,7 +10,7 @@
 
 @interface Breakable : SKSpriteNode
 
--(instancetype)initWithWhole:(SKTexture *)whole broken:(SKTexture *)broken;
+-(instancetype)initWithWhole:(SKTexture *)whole broken:(SKTexture *)broken flyaway:(SKTexture *)flyaway;
 -(void)smashBreakable;
 
 @end

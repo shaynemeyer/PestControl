@@ -93,7 +93,9 @@
                 tile.physicsBody.dynamic = NO;
                 tile.physicsBody.friction = 0;
             } else if ([map propertiesForGid:tileGid][@"tree"]) {
-                SKNode *tile = [[Breakable alloc] initWithWhole:[atlas textureNamed:@"tree"] broken:[atlas textureNamed:@"tree-stump"]];
+                SKNode *tile = [[Breakable alloc] initWithWhole:[atlas textureNamed:@"tree"]
+                                                         broken:[atlas textureNamed:@"tree-stump"]
+                                                        flyaway:[atlas textureNamed:@"tree-top"]];
                 tile.position = [self pointForCoord:coord];
                 [self addChild:tile];
                 [layer removeTileAtCoord:coord];

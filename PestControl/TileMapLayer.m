@@ -82,7 +82,8 @@
             break;
         case 't':
             return [[Breakable alloc] initWithWhole:[_atlas textureNamed:@"tree"]
-                                             broken:[_atlas textureNamed:@"tree-stump"]];
+                                             broken:[_atlas textureNamed:@"tree-stump"]
+                                            flyaway:[_atlas textureNamed:@"tree-top"]];
         case 'f':
             return [FireBug node];
         default:
