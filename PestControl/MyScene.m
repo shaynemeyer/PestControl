@@ -223,6 +223,7 @@ typedef NS_ENUM(int32_t, PCGameState)
     bounds.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, _bgLayer.layerSize.width, _bgLayer.layerSize.height)];
     bounds.physicsBody.categoryBitMask = PCBoundaryCategory;
     bounds.physicsBody.friction = 0;
+    bounds.name = @"worldBounds";
     [_worldNode addChild:bounds];
     
     self.physicsWorld.contactDelegate = self;
@@ -366,9 +367,9 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-//    SKNode *worldBounds =
-//    [_worldNode childNodeWithName:@"worldBounds"];
-//    [worldBounds removeFromParent];
+    SKNode *worldBounds =
+    [_worldNode childNodeWithName:@"worldBounds"];
+    [worldBounds removeFromParent];
     
     //1
     [super encodeWithCoder:aCoder];
@@ -387,7 +388,7 @@ typedef NS_ENUM(int32_t, PCGameState)
     //2
     [aCoder encodeDouble:_elapsedTime forKey:@"MyScene-ElapsedTime"];
     
-//    [_worldNode addChild:worldBounds];
+    [_worldNode addChild:worldBounds];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -408,18 +409,14 @@ typedef NS_ENUM(int32_t, PCGameState)
         
         _elapsedTime = [aDecoder decodeDoubleForKey:@"MyScene-ElapsedTime"];
         
-//        SKNode *bounds = [SKNode node];
-//        bounds.name = @"worldBounds";
-//        bounds.physicsBody =
-//        [SKPhysicsBody bodyWithEdgeLoopFromRect:
-//         CGRectMake(0, 0,
-//                    _bgLayer.layerSize.width,
-//                    _bgLayer.layerSize.height)];
-//        bounds.physicsBody.categoryBitMask = PCWallCategory;
-//        bounds.physicsBody.collisionBitMask = 0;
-//        bounds.physicsBody.friction = 0;
-//        [_worldNode addChild:bounds];
-//        
+        SKNode *bounds = [SKNode node];
+        bounds.name = @"worldBounds";
+        bounds.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, _bgLayer.layerSize.width, _bgLayer.layerSize.height)];
+        bounds.physicsBody.categoryBitMask = PCWallCategory;
+        bounds.physicsBody.collisionBitMask = 0;
+        bounds.physicsBody.friction = 0;
+        [_worldNode addChild:bounds];
+//
 //        if (_tileMap) {
 //            [_bgLayer enumerateChildNodesWithName:@"water"
 //                                       usingBlock:

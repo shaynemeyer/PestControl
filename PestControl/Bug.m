@@ -78,9 +78,7 @@ static SKAction *sharedFacingSideAnim = nil;
         didMove = YES;
         CGPoint randomPos = [tileLayer pointForCoord:randomCoord];
         SKAction *moveToPos = [SKAction sequence:@[[SKAction moveTo:randomPos duration:1],
-                                                   [SKAction runBlock:^(void){
-            [self walk];
-        }]]];
+                                                   [SKAction performSelector:@selector(walk) onTarget:self]]];
         [self runAction:moveToPos];
         [self faceDirection:CGPointMake(randomX, randomY)];
     }
