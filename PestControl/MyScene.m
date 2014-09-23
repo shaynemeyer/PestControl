@@ -14,6 +14,8 @@
 #import "Breakable.h"
 #import "FireBug.h"
 #import "TmxTileMapLayer.h"
+#import "SKNode+SKTExtras.h"
+#import "SKAction+SKTExtras.h"
 
 typedef NS_ENUM(int32_t, PCGameState)
 {
@@ -353,6 +355,8 @@ typedef NS_ENUM(int32_t, PCGameState)
     }  else if (other.categoryBitMask & PCFireBugCategory) {
         FireBug *fireBug = (FireBug *)other.node;
         [fireBug kickBug];
+    } else if (other.categoryBitMask & (PCBoundaryCategory | PCWallCategory | PCWaterCategory)) {
+        [self wallHitEffects:other.node];
     }
 }
 
@@ -498,6 +502,31 @@ typedef NS_ENUM(int32_t, PCGameState)
         restartLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
         restartLabel.position = CGPointMake(0+20, -40);
         [self addChild:restartLabel];
+    }
+}
+
+#pragma mark
+#pragma mark - Special Effects methods
+
+-(void)scaleWall:(SKNode *)node
+{
+    node.xScale = node.yScale = 1.2f;
+    
+    SKAction *action = [SKAction scaleTo:1.0f duration:1.2];
+    action.timingMode = SKActionTimingEaseOut;
+    [node runAction:action withKey:@"scaling"];
+}
+
+-(void)wallHitEffects:(SKNode *)node
+{
+    // outside boundary - cannot scale so add special animations.
+    if (node.physicsBody.categoryBitMask & PCBoundaryCategory) {
+        // TODO: you will add code here later
+    } else {
+        // call helper method from SKNode+SKTExtras
+        [node skt_bringToFront];
+        // call scaleWall
+        [self scaleWall:node];
     }
 }
 
