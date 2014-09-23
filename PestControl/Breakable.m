@@ -53,6 +53,12 @@
     
     SKAction *rotateAction = [SKAction rotateByAngle:-M_PI + RandomFloat() * M_PI * 2.0f duration:1.0];
     [topNode runAction:rotateAction];
+    
+    topNode.xScale = topNode.yScale = 1.5f;
+    
+    SKAction *scaleAction = [SKAction scaleTo:0.4f duration:1.0];
+    scaleAction.timingMode = SKActionTimingEaseOut;
+    [topNode runAction:scaleAction];
 }
 
 #pragma mark
