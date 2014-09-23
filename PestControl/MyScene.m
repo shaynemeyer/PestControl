@@ -20,6 +20,7 @@ typedef NS_ENUM(int32_t, PCGameState)
     PCGameStateStartingLevel,
     PCGameStatePlaying,
     PCGameStateInLevelMenu,
+    PCGameStateInReloadMenu,
 };
 
 @interface MyScene () <SKPhysicsContactDelegate>
@@ -103,6 +104,27 @@ typedef NS_ENUM(int32_t, PCGameState)
             }
             break;
         }
+        case PCGameStateInReloadMenu:
+        {
+            UITouch *touch = [touches anyObject];
+            CGPoint loc = [touch locationInNode:self];
+            SKNode *node = [self nodeAtPoint:loc];
+            if ([node.name isEqualToString:@"restartLabel"]) {
+                MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level];
+                [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:.5]];
+            } else if ([node.name isEqualToString:@"continueLabel"]) {
+                [node removeFromParent];
+                node = [self childNodeWithName:@"restartLabel"];
+                [node removeFromParent];
+                [self childNodeWithName:@"msgLabel"].hidden = YES;
+                
+                _gameState = PCGameStatePlaying;
+                self.paused = NO;
+                
+                _startTime = _currentTime - _elapsedTime;
+            }
+            break;
+        }
     }
 }
 
@@ -111,7 +133,7 @@ typedef NS_ENUM(int32_t, PCGameState)
     
     _currentTime = currentTime;
     
-    if (_gameState == PCGameStateInLevelMenu && !self.isPaused) {
+    if ((_gameState == PCGameStateStartingLevel || _gameState == PCGameStateInReloadMenu) && !self.isPaused) {
         self.paused = YES;
     }
     
@@ -416,28 +438,54 @@ typedef NS_ENUM(int32_t, PCGameState)
         bounds.physicsBody.collisionBitMask = 0;
         bounds.physicsBody.friction = 0;
         [_worldNode addChild:bounds];
-//
-//        if (_tileMap) {
-//            [_bgLayer enumerateChildNodesWithName:@"water"
-//                                       usingBlock:
-//             ^(SKNode *node, BOOL *stop){
-//                 node.hidden = YES;
-//             }];
-//        }
-//        
-//        switch (_gameState) {
-//            case PCGameStateInReloadMenu:
-//            case PCGameStatePlaying:
-//            {
-//                _gameState = PCGameStateInReloadMenu;
-//                [self showReloadMenu];
-//                break;
-//            }
-//            default: break;
-//        }
+
+        if (_tileMap) {
+            [_bgLayer enumerateChildNodesWithName:@"water"
+                                       usingBlock:
+             ^(SKNode *node, BOOL *stop){
+                 node.hidden = YES;
+             }];
+        }
+        
+        switch (_gameState) {
+            case PCGameStateInReloadMenu:
+            case PCGameStatePlaying:
+            {
+                _gameState = PCGameStateInReloadMenu;
+                [self showReloadMenu];
+                break;
+            }
+            default: break;
+        }
         
     }
     return self;
+}
+
+-(void)showReloadMenu
+{
+    SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"msgLabel"];
+    label.text = @"Found a Save File";
+    label.hidden = NO;
+    
+    SKLabelNode *continueLabel = (SKLabelNode *)[self childNodeWithName:@"continueLabel"];
+    if (!continueLabel) {
+        continueLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        continueLabel.text = @"Continue?";
+        continueLabel.name = @"continueLabel";
+        continueLabel.fontSize = 28;
+        continueLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+        continueLabel.position = CGPointMake(0-20, -40);
+        [self addChild:continueLabel];
+        
+        SKLabelNode *restartLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        restartLabel.text = @"Restart Level?";
+        restartLabel.name = @"restartLabel";
+        restartLabel.fontSize = 28;
+        restartLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        restartLabel.position = CGPointMake(0+20, -40);
+        [self addChild:restartLabel];
+    }
 }
 
 @end
