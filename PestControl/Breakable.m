@@ -50,6 +50,9 @@
     CGFloat direction = RandomSign(); // RandomSign() returns 1 or -1. This means that the node will fly right if 1 or left if -1.
     SKAction *horzAction = [SKAction moveByX:100.0f * direction y:0.0f duration:1.0];
     [topNode runAction:horzAction];
+    
+    SKAction *rotateAction = [SKAction rotateByAngle:-M_PI + RandomFloat() * M_PI * 2.0f duration:1.0];
+    [topNode runAction:rotateAction];
 }
 
 #pragma mark
