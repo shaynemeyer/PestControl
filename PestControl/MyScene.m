@@ -16,6 +16,7 @@
 #import "TmxTileMapLayer.h"
 #import "SKNode+SKTExtras.h"
 #import "SKAction+SKTExtras.h"
+#import "SKTEffects.h"
 
 typedef NS_ENUM(int32_t, PCGameState)
 {
@@ -65,6 +66,7 @@ typedef NS_ENUM(int32_t, PCGameState)
         _levelTimeLimit = [levelData[@"timeLimit"] doubleValue];
         [self createUserInterface];
         _gameState = PCGameStateStartingLevel;
+        self.backgroundColor = SKColorWithRGB(89, 133, 39);
     }
     return self;
 }
@@ -510,11 +512,30 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 -(void)scaleWall:(SKNode *)node
 {
-    node.xScale = node.yScale = 1.2f;
-    
-    SKAction *action = [SKAction scaleTo:1.0f duration:1.2];
-    action.timingMode = SKActionTimingEaseOut;
-    [node runAction:action withKey:@"scaling"];
+//    node.xScale = node.yScale = 1.2f;
+//    
+//    SKAction *action = [SKAction scaleTo:1.0f duration:1.2];
+//    action.timingMode = SKActionTimingEaseOut;
+//    [node runAction:action withKey:@"scaling"];
+    if ([node actionForKey:@"scaling"] == nil) {
+        // Create a new scale but remember the old.
+        CGPoint oldScale = CGPointMake(node.xScale, node.yScale);
+        CGPoint newScale = CGPointMultiplyScalar(oldScale, 1.2f); 
+        
+        // create scale effect.
+        SKTScaleEffect *scaleEffect = [SKTScaleEffect effectWithNode:node
+                                                            duration:1.2
+                                                          startScale:newScale
+                                                            endScale:oldScale];
+        // simulate shaking effect.
+        scaleEffect.timingFunction = SKTCreateShakeFunction(4);
+        
+        // since you cannot apply scale effect directly on the object, wrap it in a SKAction.
+        SKAction *action = [SKAction actionWithEffect:scaleEffect];
+        
+        // give the keyname scaling.
+        [node runAction:action withKey:@"scaling"];
+    }
 }
 
 -(void)wallHitEffects:(SKNode *)node
