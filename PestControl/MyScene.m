@@ -94,11 +94,14 @@ typedef NS_ENUM(int32_t, PCGameState)
             if ([node containsPoint:loc]) {
                 MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level+1];
                 
+                newScene.userData = self.userData;
                 [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:0.5]];
             } else {
                 node = [self childNodeWithName:@"retryLabel"];
                 if ([node containsPoint:loc]) {
                     MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level];
+                    
+                    newScene.userData = self.userData;
                     [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:0.5]];
                 }
             }
@@ -111,6 +114,7 @@ typedef NS_ENUM(int32_t, PCGameState)
             SKNode *node = [self nodeAtPoint:loc];
             if ([node.name isEqualToString:@"restartLabel"]) {
                 MyScene *newScene = [[MyScene alloc] initWithSize:self.size level:_level];
+                newScene.userData = self.userData;
                 [self.view presentScene:newScene transition:[SKTransition flipVerticalWithDuration:.5]];
             } else if ([node.name isEqualToString:@"continueLabel"]) {
                 [node removeFromParent];
@@ -183,6 +187,15 @@ typedef NS_ENUM(int32_t, PCGameState)
         tryAgain.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
         tryAgain.position = CGPointMake(0-20, -40);
         [self addChild:tryAgain];
+    }
+    
+    if (won) {
+        NSMutableDictionary *records = self.userData[@"bestTimes"];
+        CGFloat bestTime = [records[@(_level)] floatValue];
+        if( !bestTime || _elapsedTime < bestTime) {
+            records[@(_level)] = @(_elapsedTime);
+            label.text = [NSString stringWithFormat:@"New Record! %2.2f",_elapsedTime];
+        }
     }
 }
 

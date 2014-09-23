@@ -24,6 +24,10 @@
     SKScene * scene = [[MyScene alloc] initWithSize:skView.bounds.size level:0];
     scene.scaleMode = SKSceneScaleModeResizeFill;
     
+    NSMutableDictionary *userData = [NSMutableDictionary dictionary];
+    userData[@"bestTimes"] = [NSMutableDictionary dictionary];
+    scene.userData = userData;
+    
     // Present the scene.
     [skView presentScene:scene];
 }
