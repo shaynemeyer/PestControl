@@ -59,6 +59,10 @@
     SKAction *scaleAction = [SKAction scaleTo:0.4f duration:1.0];
     scaleAction.timingMode = SKActionTimingEaseOut;
     [topNode runAction:scaleAction];
+    
+    [topNode runAction:[SKAction sequence:@[[SKAction waitForDuration:0.6],
+                                            [SKAction fadeOutWithDuration:0.6],
+                                            [SKAction fadeOutWithDuration:0.4]]]];
 }
 
 #pragma mark
