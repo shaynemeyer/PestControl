@@ -26,6 +26,14 @@ typedef NS_ENUM(int32_t, PCGameState)
     PCGameStateInReloadMenu,
 };
 
+typedef NS_ENUM(NSInteger, Side)
+{
+    SideRight   = 0,
+    SideLeft    = 2,
+    SideTop     = 1,
+    SideBottom  = 3,
+};
+
 @interface MyScene () <SKPhysicsContactDelegate>
 
 @end
@@ -540,6 +548,8 @@ typedef NS_ENUM(int32_t, PCGameState)
 
 -(void)wallHitEffects:(SKNode *)node
 {
+    Side side = [self sideForCollisionWithNode:node];
+    
     // outside boundary - cannot scale so add special animations.
     if (node.physicsBody.categoryBitMask & PCBoundaryCategory) {
         // TODO: you will add code here later
@@ -548,7 +558,57 @@ typedef NS_ENUM(int32_t, PCGameState)
         [node skt_bringToFront];
         // call scaleWall
         [self scaleWall:node];
+        [self moveWall:node onSide:side];
     }
+}
+
+-(Side)sideForCollisionWithNode:(SKNode *)node
+{
+    CGPoint diff = CGPointSubtract(node.position, _player.position);
+    CGFloat angle = CGPointToAngle(diff);
+    
+    if (angle > -M_PI_4 && angle <= M_PI_4) {
+        return SideRight;
+    } else if (angle > M_PI_4 && angle <= 3.0f * M_PI_4) {
+        return SideTop;
+    } else if (angle <= -M_PI_4 && angle > -3.0f * M_PI_4) {
+        return SideBottom;
+    } else {
+        return SideLeft;
+    }
+}
+
+-(void)moveWall:(SKNode *)node onSide:(Side)side
+{
+    if ([node actionForKey:@"moving"] == nil) {
+        // lookup table to determine the offset based on side of player that collides with wall.
+        static CGPoint offsets[] = {
+            {   4.0f,   0.0f    },
+            {   0.0f,   4.0f    },
+            {   -4.0f,  0.0f    },
+            {   0.0f,   -4.0f   },
+        };
+        
+        // add offset to the walls current position.
+        CGPoint oldPosition = node.position;
+        CGPoint offset = offsets[side];
+        CGPoint newPosition = CGPointAdd(node.position, offset);
+        
+        // create a move effect to shift the wall.
+        SKTMoveEffect *moveEffect = [SKTMoveEffect effectWithNode:node
+                                                         duration:0.6
+                                                    startPosition:newPosition
+                                                      endPosition:oldPosition];
+        // set the timing function for the animation.
+        moveEffect.timingFunction = SKTTimingFunctionBackEaseOut;
+        
+        // create and call action.
+        SKAction *action = [SKAction actionWithEffect:moveEffect];
+        [node runAction:action withKey:@"moving"];
+    }
+    
+
+
 }
 
 @end
