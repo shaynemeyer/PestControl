@@ -94,6 +94,7 @@ typedef NS_ENUM(NSInteger, Side)
         case PCGameStatePlaying:
         {
             UITouch *touch = [touches anyObject];
+            [self tapEffectsForTouch:touch];
             [_player moveToward:[touch locationInNode:_worldNode]];
             break;
         }
@@ -549,6 +550,7 @@ typedef NS_ENUM(NSInteger, Side)
 -(void)wallHitEffects:(SKNode *)node
 {
     Side side = [self sideForCollisionWithNode:node];
+    [self squashPlayerForSide:side];
     
     // outside boundary - cannot scale so add special animations.
     if (node.physicsBody.categoryBitMask & PCBoundaryCategory) {
@@ -564,17 +566,30 @@ typedef NS_ENUM(NSInteger, Side)
 
 -(Side)sideForCollisionWithNode:(SKNode *)node
 {
-    CGPoint diff = CGPointSubtract(node.position, _player.position);
-    CGFloat angle = CGPointToAngle(diff);
-    
-    if (angle > -M_PI_4 && angle <= M_PI_4) {
-        return SideRight;
-    } else if (angle > M_PI_4 && angle <= 3.0f * M_PI_4) {
-        return SideTop;
-    } else if (angle <= -M_PI_4 && angle > -3.0f * M_PI_4) {
-        return SideBottom;
+    // Did the player hit the screen bounds?
+    if (node.physicsBody.categoryBitMask & PCBoundaryCategory) {
+        if (_player.position.x < 20.0f) {
+            return SideLeft;
+        } else if (_player.position.y < 20.0f) {
+            return SideBottom;
+        } else if (_player.position.x > self.size.width - 20.0f) {
+            return SideRight;
+        } else {
+            return SideTop;
+        }
     } else {
-        return SideLeft;
+        CGPoint diff = CGPointSubtract(node.position, _player.position);
+        CGFloat angle = CGPointToAngle(diff);
+        
+        if (angle > -M_PI_4 && angle <= M_PI_4) {
+            return SideRight;
+        } else if (angle > M_PI_4 && angle <= 3.0f * M_PI_4) {
+            return SideTop;
+        } else if (angle <= -M_PI_4 && angle > -3.0f * M_PI_4) {
+            return SideBottom;
+        } else {
+            return SideLeft;
+        }
     }
 }
 
@@ -606,9 +621,55 @@ typedef NS_ENUM(NSInteger, Side)
         SKAction *action = [SKAction actionWithEffect:moveEffect];
         [node runAction:action withKey:@"moving"];
     }
+}
+
+-(void)tapEffectsForTouch:(UITouch *)touch
+{
+    [self stretchPlayerWhenMoved];
+}
+
+-(void)stretchPlayerWhenMoved
+{
+    CGPoint oldScale = CGPointMake(_player.xScale,
+                                   _player.yScale);
+    CGPoint newScale = CGPointMultiplyScalar(oldScale, 1.4f);
     
+    SKTScaleEffect *scaleEffect = [SKTScaleEffect effectWithNode:_player
+                                                        duration:0.2
+                                                      startScale:newScale
+                                                        endScale:oldScale];
+    scaleEffect.timingFunction = SKTTimingFunctionSmoothstep;
+    
+    [_player runAction:[SKAction actionWithEffect:scaleEffect]];
+}
 
-
+-(void)squashPlayerForSide:(Side)side
+{
+    if ([_player actionForKey:@"squash"] != nil) {
+        return;
+    }
+    
+    CGPoint oldScale = CGPointMake(_player.xScale,
+                                   _player.yScale);
+    CGPoint newScale = oldScale;
+    
+    const float ScaleFactor = 1.6f;
+    
+    if (side == SideTop || side == SideBottom) {
+        newScale.x *= ScaleFactor;
+        newScale.y /= ScaleFactor;
+    } else {
+        newScale.x /= ScaleFactor;
+        newScale.y *= ScaleFactor;
+    }
+    
+    SKTScaleEffect *scaleEffect = [SKTScaleEffect effectWithNode:_player
+                                                        duration:0.2
+                                                      startScale:newScale
+                                                        endScale:oldScale];
+    scaleEffect.timingFunction = SKTTimingFunctionQuarticEaseOut;
+    
+    [_player runAction:[SKAction actionWithEffect:scaleEffect] withKey:@"squash"];
 }
 
 @end
