@@ -686,6 +686,7 @@ typedef NS_ENUM(NSInteger, Side)
     }];
 }
 
+// TODO: Bug in this code. fix later.
 - (void)crackWall:(SKSpriteNode *)wall
 {
     if ((wall.physicsBody.categoryBitMask & PCWallCategory) != 0) {
@@ -696,6 +697,76 @@ typedef NS_ENUM(NSInteger, Side)
         SKAction *animate = [SKAction animateWithTextures:textures timePerFrame:2.0];
         [wall runAction:animate];
     }
+}
+
+- (void)bugHitEffects:(SKSpriteNode *)bug
+{
+    // Remove all actions so the bug stops moving.
+    bug.physicsBody = nil;
+    [bug removeAllActions];
+    
+    // Workaround for a bug in SpriteKit when running multiple actions.
+    SKNode *newNode = [SKNode node];
+    [_bugLayer addChild:newNode];
+    newNode.position = bug.position;
+    bug.position = CGPointZero;
+    [bug removeFromParent];
+    [newNode addChild:bug];
+    
+    // set const and runAction.
+    const NSTimeInterval Duration = 1.3;
+    [newNode runAction:
+     [SKAction skt_removeFromParentAfterDelay:Duration]];
+    
+    // 4: Call custom bug effects.
+    [self scaleBug:newNode duration:Duration];
+    [self rotateBug:newNode duration:Duration];
+    [self fadeBug:newNode duration:Duration];
+}
+
+- (void)scaleBug:(SKNode *)node
+        duration:(NSTimeInterval)duration
+{
+    const CGFloat ScaleFactor = 1.5f;
+    
+    SKAction *scaleUp = [SKAction scaleTo:ScaleFactor
+                                 duration:duration * 0.16667];
+    scaleUp.timingMode = SKActionTimingEaseIn;
+    
+    SKAction *scaleDown = [SKAction scaleTo:0.0f
+                                   duration:duration * 0.83335];
+    scaleDown.timingMode = SKActionTimingEaseIn;
+    
+    [node runAction:[SKAction sequence:@[scaleUp, scaleDown]]];
+}
+
+- (void)rotateBug:(SKNode *)node
+         duration:(NSTimeInterval)duration
+{
+    SKAction *rotateAction = [SKAction rotateByAngle:M_PI*6.0f
+                                            duration:duration];
+    [node runAction:rotateAction];
+}
+
+- (void)fadeBug:(SKNode *)node duration:(NSTimeInterval)duration
+{
+    SKAction *fadeAction =
+    [SKAction fadeOutWithDuration:duration * 0.75];
+    fadeAction.timingMode = SKActionTimingEaseIn;
+    [node runAction:[SKAction skt_afterDelay:duration * 0.25
+                                     perform:fadeAction]];
+}
+
+- (void)fireBugHitEffects
+{
+    SKAction *blink =
+    [SKAction sequence:@[
+                         [SKAction fadeOutWithDuration:0.0],
+                         [SKAction waitForDuration:0.1],
+                         [SKAction fadeInWithDuration:0.0],
+                         [SKAction waitForDuration:0.1]]];
+    
+    [_player runAction:[SKAction repeatAction:blink count:4]];
 }
 
 @end
