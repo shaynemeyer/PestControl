@@ -561,6 +561,7 @@ typedef NS_ENUM(NSInteger, Side)
         // call scaleWall
         [self scaleWall:node];
         [self moveWall:node onSide:side];
+        //[self crackWall:(SKSpriteNode *)node]; TODO: Bug in this code. need to fix.
     }
     
     [self bugJelly];
@@ -683,6 +684,18 @@ typedef NS_ENUM(NSInteger, Side)
         
         [node runAction:[SKAction actionWithEffect:scale] withKey:@"scale"];
     }];
+}
+
+- (void)crackWall:(SKSpriteNode *)wall
+{
+    if ((wall.physicsBody.categoryBitMask & PCWallCategory) != 0) {
+        
+        NSArray *textures = @[[_bgLayer textureNamed:@"wall-cracked"],
+                              [_bgLayer textureNamed:@"wall"]];
+        
+        SKAction *animate = [SKAction animateWithTextures:textures timePerFrame:2.0];
+        [wall runAction:animate];
+    }
 }
 
 @end

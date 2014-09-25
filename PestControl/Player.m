@@ -10,6 +10,10 @@
 #import "MyScene.h"
 
 @implementation Player
+{
+    SKEmitterNode *_emitter;
+    AnimatingSprite *_sprite;
+}
 
 -(instancetype)init
 {
@@ -17,10 +21,14 @@
     SKTexture *texture = [atlas textureNamed:@"player_ft1"];
     texture.filteringMode = SKTextureFilteringNearest;
     
-    if (self = [super initWithTexture:texture]) {
+    if (self = [super init]) {
+        _sprite = [[AnimatingSprite alloc] initWithTexture:texture];
         self.name = @"player";
+        
+        [self addChild:_sprite];
+        
         // use a circle thats a bit smaller.
-        CGFloat minDiam = MIN(self.size.width, self.size.height);
+        CGFloat minDiam = MIN(_sprite.size.width, _sprite.size.height);
         minDiam = MAX(minDiam-16, 4);
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:minDiam / 2.0];
         // enable collision detection.
@@ -34,12 +42,12 @@
         self.physicsBody.categoryBitMask = PCPlayerCategory;
         self.physicsBody.contactTestBitMask = 0xFFFFFFFF;
         
-        self.physicsBody.collisionBitMask = PCBoundaryCategory | PCWallCategory | PCWaterCategory;
+        self.physicsBody.collisionBitMask = PCBoundaryCategory | PCWallCategory | PCWaterCategory | PCFireBugCategory;
         
         // setup animation
-        self.facingForwardAnim = [Player createAnimWithPrefix:@"player" suffix:@"ft"];
-        self.facingBackAnim = [Player createAnimWithPrefix:@"player" suffix:@"bk"];
-        self.facingSideAnim = [Player createAnimWithPrefix:@"player" suffix:@"lt"];
+        _sprite.facingForwardAnim = [AnimatingSprite createAnimWithPrefix:@"player" suffix:@"ft"];
+        _sprite.facingBackAnim = [AnimatingSprite createAnimWithPrefix:@"player" suffix:@"bk"];
+        _sprite.facingSideAnim = [AnimatingSprite createAnimWithPrefix:@"player" suffix:@"lt"];
     }
     
     return self;
@@ -56,7 +64,7 @@
 -(void)faceCurrentDirection
 {
     // set direction to current direction
-    PCFacingDirection facingDir = self.facingDirection;
+    PCFacingDirection facingDir = _sprite.facingDirection;
     
     // is the player moving vertically more than horizontally? If so choose forward or backward based on which way the player is facing.
     CGVector dir = self.physicsBody.velocity;
@@ -71,7 +79,23 @@
     }
     
     // Set facingDirection Property.
-    self.facingDirection = facingDir;
+    _sprite.facingDirection = facingDir;
 }
+
+//- (instancetype)initWithCoder:(NSCoder *)aDecoder
+//{
+//    if (self = [super initWithCoder:aDecoder]) {
+//        _sprite = [aDecoder decodeObjectForKey:@"Player-Sprite"];
+//        _emitter = [aDecoder decodeObjectForKey:@"Player-Emitter"];
+//    }
+//    return self;
+//}
+//
+//- (void)encodeWithCoder:(NSCoder *)aCoder
+//{
+//    [super encodeWithCoder:aCoder];
+//    [aCoder encodeObject:_sprite forKey:@"Player-Sprite"];
+//    [aCoder encodeObject:_emitter forKey:@"Player-Emitter"];
+//}
 
 @end

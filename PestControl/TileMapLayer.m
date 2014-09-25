@@ -168,4 +168,9 @@
     return self;
 }
 
+- (SKTexture *)textureNamed:(NSString *)name
+{
+    return [_atlas textureNamed:name];
+}
+
 @end

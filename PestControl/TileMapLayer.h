@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) CGSize gridSize;
 @property (readonly, nonatomic) CGSize layerSize;
-
 @property (readonly, nonatomic) CGSize tileSize;
 
 -(instancetype)initWithAtlasNamed:(NSString *)atlasName tileSize:(CGSize)tileSize grid:(NSArray *)grid;
@@ -22,5 +21,6 @@
 
 -(SKNode *)tileAtCoord:(CGPoint)coord;
 -(SKNode *)tileAtPoint:(CGPoint)point;
+- (SKTexture *)textureNamed:(NSString *)name;
 
 @end

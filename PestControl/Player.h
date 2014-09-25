@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "AnimatingSprite.h"
 
-@interface Player : AnimatingSprite
+@interface Player : SKNode
 
 -(void)moveToward:(CGPoint)targetPosition;
 -(void)faceCurrentDirection;
