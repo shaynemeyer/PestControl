@@ -562,6 +562,8 @@ typedef NS_ENUM(NSInteger, Side)
         [self scaleWall:node];
         [self moveWall:node onSide:side];
     }
+    
+    [self bugJelly];
 }
 
 -(Side)sideForCollisionWithNode:(SKNode *)node
@@ -670,6 +672,17 @@ typedef NS_ENUM(NSInteger, Side)
     scaleEffect.timingFunction = SKTTimingFunctionQuarticEaseOut;
     
     [_player runAction:[SKAction actionWithEffect:scaleEffect] withKey:@"squash"];
+}
+
+-(void)bugJelly
+{
+    [_bugLayer enumerateChildNodesWithName:@"bug" usingBlock:^(SKNode *node, BOOL *stop) {
+        
+        SKTScaleEffect * scale = [SKTScaleEffect effectWithNode:node duration:1.0 startScale:CGPointMake(1.2, 1.2) endScale:CGPointMake(1.0, 1.0)];
+        scale.timingFunction = SKTTimingFunctionElasticEaseOut;
+        
+        [node runAction:[SKAction actionWithEffect:scale] withKey:@"scale"];
+    }];
 }
 
 @end
