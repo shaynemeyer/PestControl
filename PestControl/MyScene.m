@@ -724,6 +724,9 @@ typedef NS_ENUM(NSInteger, Side)
     [self fadeBug:newNode duration:Duration];
     
     [self bounceBug:newNode duration:Duration];
+    
+    bug.color = SKColorWithRGB(128, 128, 128);
+    bug.colorBlendFactor = 1.0f;
 }
 
 - (void)scaleBug:(SKNode *)node
