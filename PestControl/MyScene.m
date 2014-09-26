@@ -727,6 +727,9 @@ typedef NS_ENUM(NSInteger, Side)
     
     bug.color = SKColorWithRGB(128, 128, 128);
     bug.colorBlendFactor = 1.0f;
+    
+    SKNode *maskNode = [SKSpriteNode spriteNodeWithTexture:bug.texture];
+    [self flashBug:newNode mask:maskNode];
 }
 
 - (void)scaleBug:(SKNode *)node
@@ -786,6 +789,24 @@ typedef NS_ENUM(NSInteger, Side)
     
     SKAction *upAction = [SKAction actionWithEffect:upEffect];
     [node runAction:upAction];
+}
+
+-(void)flashBug:(SKNode *)node mask:(SKNode *)mask
+{
+    // 1
+    SKCropNode *cropNode = [SKCropNode node];
+    cropNode.maskNode = mask;
+    
+    // 2
+    SKSpriteNode *whiteNode = [SKSpriteNode spriteNodeWithColor:SKColorWithRGB(255, 255, 255) size:CGSizeMake(50, 50)];
+    
+    [cropNode addChild:whiteNode];
+    
+    // 3
+    [cropNode runAction:[SKAction sequence:@[[SKAction fadeInWithDuration:0.05],
+                                             [SKAction fadeOutWithDuration:0.3]]]];
+    
+    [node addChild:cropNode];
 }
 
 @end
