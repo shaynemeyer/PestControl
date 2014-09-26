@@ -722,6 +722,8 @@ typedef NS_ENUM(NSInteger, Side)
     [self scaleBug:newNode duration:Duration];
     [self rotateBug:newNode duration:Duration];
     [self fadeBug:newNode duration:Duration];
+    
+    [self bounceBug:newNode duration:Duration];
 }
 
 - (void)scaleBug:(SKNode *)node
@@ -767,6 +769,20 @@ typedef NS_ENUM(NSInteger, Side)
                          [SKAction waitForDuration:0.1]]];
     
     [_player runAction:[SKAction repeatAction:blink count:4]];
+}
+
+-(void)bounceBug:(SKNode *)node duration:(NSTimeInterval)duration
+{
+    CGPoint oldPosition = node.position;
+    CGPoint upPosition = CGPointAdd(oldPosition, CGPointMake(0.0f, 80.0f));
+    
+    SKTMoveEffect *upEffect = [SKTMoveEffect effectWithNode:node duration:1.2 startPosition:oldPosition endPosition:upPosition];
+    upEffect.timingFunction = ^(float t) {
+        return powf(2.0f, -3.0f * t) * fabsf(sinf(t * M_PI * 3.0f));
+    };
+    
+    SKAction *upAction = [SKAction actionWithEffect:upEffect];
+    [node runAction:upAction];
 }
 
 @end
