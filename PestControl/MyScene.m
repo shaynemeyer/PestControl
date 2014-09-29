@@ -17,6 +17,7 @@
 #import "SKNode+SKTExtras.h"
 #import "SKAction+SKTExtras.h"
 #import "SKTEffects.h"
+#import "SKEmitterNode+SKTExtras.h"
 
 typedef NS_ENUM(int32_t, PCGameState)
 {
@@ -563,6 +564,7 @@ typedef NS_ENUM(NSInteger, Side)
         [self moveWall:node onSide:side];
         //[self crackWall:(SKSpriteNode *)node]; TODO: Bug in this code. need to fix.
         [self screenShakeForSide:side power:8.0f];
+        [self showParticlesForWall:node onSide:side];
     }
     
     [self bugJelly];
@@ -853,6 +855,26 @@ typedef NS_ENUM(NSInteger, Side)
                                                                            node.hidden = NO;
                                                                        }];
                                             }]]]];
+}
+
+-(void)showParticlesForWall:(SKNode *)node onSide:(Side)side
+{
+    CGPoint position = _player.position;
+    if (side == SideRight) {
+        position.x = node.position.x - _bgLayer.tileSize.width / 2.0f;
+    } else if (side == SideLeft) {
+        position.x = node.position.x + _bgLayer.tileSize.width / 2.0f;
+    } else if (side == SideTop) {
+        position.y = node.position.y - _bgLayer.tileSize.height / 2.0f;
+    } else {
+        position.y = node.position.y + _bgLayer.tileSize.height / 2.0f;
+    }
+    
+    SKEmitterNode *emitter = [SKEmitterNode skt_emitterNamed:@"PlayerHitWall"];
+    emitter.position = position;
+    
+    [emitter runAction:[SKAction skt_removeFromParentAfterDelay:1.0]];
+    [_bgLayer addChild:emitter];
 }
 
 @end
