@@ -554,7 +554,7 @@ typedef NS_ENUM(NSInteger, Side)
     
     // outside boundary - cannot scale so add special animations.
     if (node.physicsBody.categoryBitMask & PCBoundaryCategory) {
-        // TODO: you will add code here later
+        [self screenShakeForSide:side power:20.0f];
     } else {
         // call helper method from SKNode+SKTExtras
         [node skt_bringToFront];
@@ -562,6 +562,7 @@ typedef NS_ENUM(NSInteger, Side)
         [self scaleWall:node];
         [self moveWall:node onSide:side];
         //[self crackWall:(SKSpriteNode *)node]; TODO: Bug in this code. need to fix.
+        [self screenShakeForSide:side power:8.0f];
     }
     
     [self bugJelly];
@@ -807,6 +808,24 @@ typedef NS_ENUM(NSInteger, Side)
                                              [SKAction fadeOutWithDuration:0.3]]]];
     
     [node addChild:cropNode];
+}
+
+-(void)screenShakeForSide:(Side)side power:(CGFloat)power
+{
+    static CGPoint offsets[] = {
+        {   1.0f,   0.0f    },
+        {   0.0f,   1.0f    },
+        {   -1.0f,  0.0f    },
+        {   0.0f,   -1.0f   },
+    };
+    
+    CGPoint amount = offsets[side];
+    amount.x *= power;
+    amount.y *= power;
+    
+    SKAction *action = [SKAction skt_screenShakeWithNode:_worldNode amount:amount oscillations:3 duration:1.0];
+    
+    [_worldNode runAction:action];
 }
 
 @end
