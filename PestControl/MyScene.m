@@ -875,6 +875,10 @@ typedef NS_ENUM(NSInteger, Side)
     
     [emitter runAction:[SKAction skt_removeFromParentAfterDelay:1.0]];
     [_bgLayer addChild:emitter];
+    
+    if (node.physicsBody.categoryBitMask & PCWaterCategory) {
+        emitter.particleTexture = [SKTexture textureWithImageNamed:@"WaterDrop"];
+    }
 }
 
 @end
