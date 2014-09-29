@@ -18,7 +18,7 @@
 -(instancetype)initWithWhole:(SKTexture *)whole broken:(SKTexture *)broken flyaway:(SKTexture *)flyaway
 {
     if (self = [super initWithTexture:whole]) {
-        
+        self.name = @"background";
         _broken = broken;
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width*0.8, self.size.height*0.8)];
         self.physicsBody.dynamic = NO;

@@ -780,6 +780,8 @@ typedef NS_ENUM(NSInteger, Side)
     [_player runAction:[SKAction repeatAction:blink count:4]];
     
     [_worldNode runAction:[SKAction skt_screenShakeWithNode:_worldNode amount:CGPointMake(1.05f, 1.05f) oscillations:6 duration:2.0]];
+    
+    [self colorGlitch];
 }
 
 -(void)bounceBug:(SKNode *)node duration:(NSTimeInterval)duration
@@ -830,6 +832,27 @@ typedef NS_ENUM(NSInteger, Side)
     SKAction *action = [SKAction skt_screenShakeWithNode:_worldNode amount:amount oscillations:3 duration:1.0];
     
     [_worldNode runAction:action];
+}
+
+-(void)colorGlitch
+{
+    // 1
+    [_bgLayer enumerateChildNodesWithName:@"background" usingBlock:^(SKNode *node, BOOL *stop) {
+        node.hidden = YES;
+    }];
+    
+    [self runAction:[SKAction sequence:@[
+                                         // 2
+                                         [SKAction skt_colorGlitchWithScene:self
+                                                              originalColor:SKColorWithRGB(89, 133, 39)
+                                                                   duration:0.1],
+                                         // 3
+                                         [SKAction runBlock:^{
+                                            [_bgLayer enumerateChildNodesWithName:@"background"
+                                                                       usingBlock:^(SKNode *node, BOOL *stop) {
+                                                                           node.hidden = NO;
+                                                                       }];
+                                            }]]]];
 }
 
 @end

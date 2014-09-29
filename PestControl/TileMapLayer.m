@@ -51,6 +51,7 @@
             tile = [SKSpriteNode spriteNodeWithTexture:
                     [_atlas textureNamed:
                      RandomFloat() < 0.1 ? @"grass2" : @"grass1"]];
+            tile.name = @"background";
             break;
         case 'x':
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
@@ -61,6 +62,7 @@
             break;
         case '=':
             tile = [SKSpriteNode spriteNodeWithTexture:[_atlas textureNamed:@"stone"]];
+            tile.name = @"background";
             break;
         case 'w':
             tile = [SKSpriteNode spriteNodeWithTexture:
