@@ -731,6 +731,8 @@ typedef NS_ENUM(NSInteger, Side)
     
     SKNode *maskNode = [SKSpriteNode spriteNodeWithTexture:bug.texture];
     [self flashBug:newNode mask:maskNode];
+    
+    [_worldNode runAction:[SKAction skt_screenShakeWithNode:_worldNode amount:CGPointMake(0.0f, -12.0f) oscillations:3 duration:1.0]];
 }
 
 - (void)scaleBug:(SKNode *)node
