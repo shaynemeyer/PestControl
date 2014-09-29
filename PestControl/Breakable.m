@@ -9,6 +9,8 @@
 #import "Breakable.h"
 #import "MyScene.h"
 #import "SKNode+SKTExtras.h"
+#import "SKAction+SKTExtras.h"
+#import "SKEmitterNode+SKTExtras.h"
 
 @implementation Breakable{
     SKTexture *_broken;
@@ -63,6 +65,13 @@
     [topNode runAction:[SKAction sequence:@[[SKAction waitForDuration:0.6],
                                             [SKAction fadeOutWithDuration:0.6],
                                             [SKAction fadeOutWithDuration:0.4]]]];
+    
+    // smash tree
+    SKEmitterNode *emitter = [SKEmitterNode skt_emitterNamed:@"TreeSmash"];
+    emitter.targetNode = self.parent;
+    [emitter runAction:[SKAction skt_removeFromParentAfterDelay:1.0]];
+    
+    [self addChild:emitter];
 }
 
 #pragma mark
