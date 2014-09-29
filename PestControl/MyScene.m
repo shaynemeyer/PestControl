@@ -778,6 +778,8 @@ typedef NS_ENUM(NSInteger, Side)
                          [SKAction waitForDuration:0.1]]];
     
     [_player runAction:[SKAction repeatAction:blink count:4]];
+    
+    [_worldNode runAction:[SKAction skt_screenShakeWithNode:_worldNode amount:CGPointMake(1.05f, 1.05f) oscillations:6 duration:2.0]];
 }
 
 -(void)bounceBug:(SKNode *)node duration:(NSTimeInterval)duration
