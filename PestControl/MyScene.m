@@ -18,6 +18,17 @@
 #import "SKAction+SKTExtras.h"
 #import "SKTEffects.h"
 #import "SKEmitterNode+SKTExtras.h"
+#import "SKTAudio.h"
+
+static SKAction *HitWallSound;
+static SKAction *HitWaterSound;
+static SKAction *HitTreeSound;
+static SKAction *HitFireBugSound;
+static SKAction *PlayerMoveSound;
+static SKAction *TickTockSound;
+static SKAction *WinSound;
+static SKAction *LoseSound;
+static SKAction *KillBugSounds[12];
 
 typedef NS_ENUM(int32_t, PCGameState)
 {
@@ -56,6 +67,24 @@ typedef NS_ENUM(NSInteger, Side)
     double _elapsedTime;
 }
 
++(void)initialize
+{
+    if ([self class] == [MyScene class]) {
+        HitWallSound = [SKAction playSoundFileNamed:@"HitWall.mp3" waitForCompletion:NO];
+        HitWaterSound = [SKAction playSoundFileNamed:@"HitWater.mp3" waitForCompletion:NO];
+        HitTreeSound = [SKAction playSoundFileNamed:@"HitTree.mp3" waitForCompletion:NO];
+        HitFireBugSound = [SKAction playSoundFileNamed:@"HitFireBug.mp3" waitForCompletion:NO];
+        PlayerMoveSound = [SKAction playSoundFileNamed:@"PlayerMove.mp3" waitForCompletion:NO];
+        TickTockSound = [SKAction playSoundFileNamed:@"TickTock.mp3" waitForCompletion:NO];
+        WinSound = [SKAction playSoundFileNamed:@"Win.mp3" waitForCompletion:NO];
+        LoseSound = [SKAction playSoundFileNamed:@"Lose.mp3" waitForCompletion:NO];
+        
+        for (int t = 0; t < 12; ++t) {
+            KillBugSounds[t] = [SKAction playSoundFileNamed:[NSString stringWithFormat:@"KillBug-%d.mp3", t+1] waitForCompletion:NO];
+        }
+    }
+}
+
 -(id)initWithSize:(CGSize)size level:(int)level{
     if (self = [super initWithSize:size]) {
         NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JuicyLevels" ofType:@"plist"]];
@@ -76,6 +105,7 @@ typedef NS_ENUM(NSInteger, Side)
         [self createUserInterface];
         _gameState = PCGameStateStartingLevel;
         self.backgroundColor = SKColorWithRGB(89, 133, 39);
+        [[SKTAudio sharedInstance] playBackgroundMusic:@"Music.mp3"];
     }
     return self;
 }
@@ -212,6 +242,9 @@ typedef NS_ENUM(NSInteger, Side)
             label.text = [NSString stringWithFormat:@"New Record! %2.2f",_elapsedTime];
         }
     }
+    
+    [[SKTAudio sharedInstance] pauseBackgroundMusic];
+    [self runAction:won ? WinSound : LoseSound];
 }
 
 -(void)centerViewOn:(CGPoint)centerOn
@@ -365,6 +398,7 @@ typedef NS_ENUM(NSInteger, Side)
     } else if (other.categoryBitMask & PCBreakableCategory) {
         Breakable *breakable = (Breakable *)other.node;
         [breakable smashBreakable];
+        [self runAction:HitTreeSound];
     }  else if (other.categoryBitMask & PCFireBugCategory) {
         FireBug *fireBug = (FireBug *)other.node;
         [fireBug kickBug];
@@ -569,6 +603,12 @@ typedef NS_ENUM(NSInteger, Side)
     }
     
     [self bugJelly];
+    
+    if (node.physicsBody.categoryBitMask & PCWaterCategory) {
+        [self runAction:HitWaterSound];
+    } else {
+        [self runAction:HitWallSound];
+    }
 }
 
 -(Side)sideForCollisionWithNode:(SKNode *)node
@@ -634,6 +674,7 @@ typedef NS_ENUM(NSInteger, Side)
 {
     [self stretchPlayerWhenMoved];
     [self showTapAtLocation:[touch locationInNode:_worldNode]];
+    [_player runAction:PlayerMoveSound];
 }
 
 -(void)stretchPlayerWhenMoved
@@ -786,6 +827,8 @@ typedef NS_ENUM(NSInteger, Side)
     [_worldNode runAction:[SKAction skt_screenShakeWithNode:_worldNode amount:CGPointMake(1.05f, 1.05f) oscillations:6 duration:2.0]];
     
     [self colorGlitch];
+    
+    [self runAction:HitFireBugSound];
 }
 
 -(void)bounceBug:(SKNode *)node duration:(NSTimeInterval)duration
