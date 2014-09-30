@@ -633,6 +633,7 @@ typedef NS_ENUM(NSInteger, Side)
 -(void)tapEffectsForTouch:(UITouch *)touch
 {
     [self stretchPlayerWhenMoved];
+    [self showTapAtLocation:[touch locationInNode:_worldNode]];
 }
 
 -(void)stretchPlayerWhenMoved
@@ -880,6 +881,32 @@ typedef NS_ENUM(NSInteger, Side)
     if (node.physicsBody.categoryBitMask & PCWaterCategory) {
         emitter.particleTexture = [SKTexture textureWithImageNamed:@"WaterDrop"];
     }
+}
+
+-(void)showTapAtLocation:(CGPoint)point
+{
+    // 1
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-3.0f, -3.0f, 6.0f, 6.0f)];
+    
+    // 2
+    SKShapeNode *shapeNode = [SKShapeNode node];
+    shapeNode.path = path.CGPath;
+    shapeNode.position = point;
+    shapeNode.strokeColor = SKColorWithRGB(255, 255, 196);
+    shapeNode.lineWidth = 1;
+    shapeNode.antialiased = NO;
+    [_worldNode addChild:shapeNode];
+    
+    // 3
+    const NSTimeInterval Duration = 0.6;
+    SKAction *scaleAction = [SKAction scaleTo:6.0f duration:Duration];
+    scaleAction.timingMode = SKActionTimingEaseOut;
+    [shapeNode runAction:[SKAction sequence:@[scaleAction,
+                                              [SKAction removeFromParent]]]];
+    // 4
+    SKAction *fadeAction = [SKAction fadeOutWithDuration:Duration];
+    fadeAction.timingMode = SKActionTimingEaseOut;
+    [shapeNode runAction:fadeAction];
 }
 
 @end
