@@ -67,6 +67,7 @@ typedef NS_ENUM(NSInteger, Side)
     double _elapsedTime;
     CFTimeInterval _lastComboTime;
     int _comboCounter;
+    BOOL _tickTockPlaying;
 }
 
 +(void)initialize
@@ -206,10 +207,17 @@ typedef NS_ENUM(NSInteger, Side)
     } else if (![_bugLayer childNodeWithName:@"bug"]) {
         [self endLevelWithSuccess:YES];
     }
+    
+    if (timeRemaining < 10 && timeRemaining > 0 && !_tickTockPlaying) {
+        _tickTockPlaying = YES;
+        [self runAction:TickTockSound withKey:@"tickTock"];
+    }
 }
 
 -(void)endLevelWithSuccess:(BOOL)won
 {
+    [self removeActionForKey:@"tickTock"];
+    
     // display proper message. Win or lose.
     SKLabelNode *label = (SKLabelNode *)[self childNodeWithName:@"msgLabel"];
     label.text = (won ? @"You Win!!!" : @"Too Slow!!!");
@@ -523,6 +531,8 @@ typedef NS_ENUM(NSInteger, Side)
             }
             default: break;
         }
+        
+        [self removeActionForKey:@"tickTock"];
         
     }
     return self;
