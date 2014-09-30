@@ -413,7 +413,7 @@ typedef NS_ENUM(NSInteger, Side)
         [self fireBugHitEffects];
         FireBug *fireBug = (FireBug *)other.node;
         [fireBug kickBug];
-    } else if (other.categoryBitMask & (PCBoundaryCategory | PCWallCategory | PCWaterCategory)) {
+    } else if (other.categoryBitMask & (PCBoundaryCategory | PCWallCategory | PCWaterCategory | PCCrackedWallCategory)) {
         [self wallHitEffects:other.node];
     }
 }
@@ -610,7 +610,7 @@ typedef NS_ENUM(NSInteger, Side)
         // call scaleWall
         [self scaleWall:node];
         [self moveWall:node onSide:side];
-        //[self crackWall:(SKSpriteNode *)node]; TODO: Bug in this code. need to fix.
+        //[self crackWall:(SKSpriteNode *)node]; todo: bug here. must troubleshoot further.
         [self screenShakeForSide:side power:8.0f];
         [self showParticlesForWall:node onSide:side];
     }
@@ -753,9 +753,20 @@ typedef NS_ENUM(NSInteger, Side)
         NSArray *textures = @[[_bgLayer textureNamed:@"wall-cracked"],
                               [_bgLayer textureNamed:@"wall"]];
         
-        SKAction *animate = [SKAction animateWithTextures:textures timePerFrame:2.0];
-        [wall runAction:animate];
+        SKAction *animate = [SKAction animateWithTextures:textures
+                                             timePerFrame:2.0];
+        [wall runAction:animate withKey:@"crackAnim"];
+        
+        wall.physicsBody.categoryBitMask = PCCrackedWallCategory;
+        [wall runAction:[SKAction skt_afterDelay:2.0 runBlock:^{
+            wall.physicsBody.categoryBitMask = PCWallCategory;
+        }]];
+    } else if (wall.physicsBody.categoryBitMask & PCCrackedWallCategory) {
+        [wall removeActionForKey:@"crackAnim"];
+        wall.texture = [_bgLayer textureNamed:@"wall-broken"];
+        wall.physicsBody = nil;
     }
+
 }
 
 - (void)bugHitEffects:(SKSpriteNode *)bug

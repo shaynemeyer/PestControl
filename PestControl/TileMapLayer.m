@@ -80,7 +80,7 @@
             return [Bug node]; // Use SpriteKit default blend mode which support transparency.
             break;
         case 'p':
-            return [Player node];
+            return (AnimatingSprite *)[Player node];
             break;
         case 't':
             return [[Breakable alloc] initWithWhole:[_atlas textureNamed:@"tree"]
