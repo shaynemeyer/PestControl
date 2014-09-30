@@ -90,6 +90,7 @@ typedef NS_ENUM(NSInteger, Side)
             self.paused = NO;
             _timerLabel.hidden = NO;
             _startTime = _currentTime;
+            [_player start];
             // Intentionally omitted break.
         }
         case PCGameStatePlaying:

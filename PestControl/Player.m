@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import "MyScene.h"
+#import "SKEmitterNode+SKTExtras.h"
 
 @implementation Player
 {
@@ -82,20 +83,29 @@
     _sprite.facingDirection = facingDir;
 }
 
-//- (instancetype)initWithCoder:(NSCoder *)aDecoder
-//{
-//    if (self = [super initWithCoder:aDecoder]) {
-//        _sprite = [aDecoder decodeObjectForKey:@"Player-Sprite"];
-//        _emitter = [aDecoder decodeObjectForKey:@"Player-Emitter"];
-//    }
-//    return self;
-//}
-//
-//- (void)encodeWithCoder:(NSCoder *)aCoder
-//{
-//    [super encodeWithCoder:aCoder];
-//    [aCoder encodeObject:_sprite forKey:@"Player-Sprite"];
-//    [aCoder encodeObject:_emitter forKey:@"Player-Emitter"];
-//}
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        _sprite = [aDecoder decodeObjectForKey:@"Player-Sprite"];
+        _emitter = [aDecoder decodeObjectForKey:@"Player-Emitter"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:_sprite forKey:@"Player-Sprite"];
+    [aCoder encodeObject:_emitter forKey:@"Player-Emitter"];
+}
+
+-(void)start
+{
+    _emitter = [SKEmitterNode skt_emitterNamed:@"PlayerTrail"];
+    _emitter.targetNode = self.parent;
+    [self addChild:_emitter];
+    
+    self.zPosition = 100.0f;
+}
 
 @end

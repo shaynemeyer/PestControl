@@ -13,5 +13,6 @@
 
 -(void)moveToward:(CGPoint)targetPosition;
 -(void)faceCurrentDirection;
+-(void)start;
 
 @end
