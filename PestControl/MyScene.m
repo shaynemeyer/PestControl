@@ -65,6 +65,8 @@ typedef NS_ENUM(NSInteger, Side)
     double _currentTime;
     double _startTime;
     double _elapsedTime;
+    CFTimeInterval _lastComboTime;
+    int _comboCounter;
 }
 
 +(void)initialize
@@ -747,6 +749,14 @@ typedef NS_ENUM(NSInteger, Side)
 
 - (void)bugHitEffects:(SKSpriteNode *)bug
 {
+    CFTimeInterval now = CACurrentMediaTime();
+    if (now - _lastComboTime < 0.5f) {
+        _comboCounter++;
+    } else {
+        _comboCounter = 0;
+    }
+    _lastComboTime = now;
+    
     // Remove all actions so the bug stops moving.
     bug.physicsBody = nil;
     [bug removeAllActions];
@@ -778,12 +788,14 @@ typedef NS_ENUM(NSInteger, Side)
     [self flashBug:newNode mask:maskNode];
     
     [_worldNode runAction:[SKAction skt_screenShakeWithNode:_worldNode amount:CGPointMake(0.0f, -12.0f) oscillations:3 duration:1.0]];
+    
+    [newNode runAction:KillBugSounds[MIN(11, _comboCounter)]];
 }
 
 - (void)scaleBug:(SKNode *)node
         duration:(NSTimeInterval)duration
 {
-    const CGFloat ScaleFactor = 1.5f;
+    const CGFloat ScaleFactor = 1.5f + _comboCounter * 0.25f;
     
     SKAction *scaleUp = [SKAction scaleTo:ScaleFactor
                                  duration:duration * 0.16667];
