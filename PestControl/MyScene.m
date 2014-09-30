@@ -404,12 +404,13 @@ typedef NS_ENUM(NSInteger, Side)
     SKPhysicsBody *other = (contact.bodyA.categoryBitMask == PCPlayerCategory ? contact.bodyB : contact.bodyA);
     
     if (other.categoryBitMask == PCBugCategory) {
-        [other.node removeFromParent];
+        [self bugHitEffects:(SKSpriteNode *)other.node];
     } else if (other.categoryBitMask & PCBreakableCategory) {
         Breakable *breakable = (Breakable *)other.node;
         [breakable smashBreakable];
         [self runAction:HitTreeSound];
     }  else if (other.categoryBitMask & PCFireBugCategory) {
+        [self fireBugHitEffects];
         FireBug *fireBug = (FireBug *)other.node;
         [fireBug kickBug];
     } else if (other.categoryBitMask & (PCBoundaryCategory | PCWallCategory | PCWaterCategory)) {
@@ -800,6 +801,8 @@ typedef NS_ENUM(NSInteger, Side)
     [_worldNode runAction:[SKAction skt_screenShakeWithNode:_worldNode amount:CGPointMake(0.0f, -12.0f) oscillations:3 duration:1.0]];
     
     [newNode runAction:KillBugSounds[MIN(11, _comboCounter)]];
+    
+    [self showParticlesForBug:newNode];
 }
 
 - (void)scaleBug:(SKNode *)node
@@ -972,6 +975,16 @@ typedef NS_ENUM(NSInteger, Side)
     SKAction *fadeAction = [SKAction fadeOutWithDuration:Duration];
     fadeAction.timingMode = SKActionTimingEaseOut;
     [shapeNode runAction:fadeAction];
+}
+
+- (void)showParticlesForBug:(SKNode *)bug
+{
+    SKEmitterNode *emitter = [SKEmitterNode skt_emitterNamed:@"BugSplatter"];
+    emitter.position = bug.position;
+    
+    [emitter runAction:[SKAction skt_removeFromParentAfterDelay:0.4]];
+    
+    [_bgLayer addChild:emitter];
 }
 
 @end
